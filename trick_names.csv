@@ -1,0 +1,108 @@
+Spin Rotation,Flip Rotation,Body Rotation,Trick Name
+
+# --- Basic Trick ---
+0,0,0,Ollie
+
+# --- Shuvits ---
+-180,0,0,Backside Shuvit
+180,0,0,Frontside Shuvit
+
+# --- Standard Flips ---
+0,360,0,Kickflip
+0,-360,0,Heelflip
+
+# --- Spin Variations Flip Rotation == 0, Spin Rotation == Body Rotation ---
+-180,0,-180,Backside 180
+180,0,180,Frontside 180
+-360,0,-360,Backside 360
+360,0,360,Frontside 360
+-540,0,-540,Backside 540
+540,0,540,Frontside 540
+-720,0,-720,Backside 720
+720,0,720,Frontside 720
+-900,0,-900,Backside 900
+900,0,900,Frontside 900
+-1080,0,-1080,Backside 1080
+1080,0,1080,Frontside 1080
+
+# --- Single Kickflip Variations, Flip Rotation == 360 ---
+-180,360,0,Varial Kickflip
+180,360,0,Hardflip
+-360,360,0,360 Flip (Tre Flip)
+-360,360,180,Bigflip (360 Flip with 180 Body Rotation)
+
+# --- Single Heelflip Variations, Flip Rotation == -360  ---
+-180,-360,0,Inward Heelflip
+180,-360,0,Varial Heelflip
+-360,-360,0,Laser Flip
+-360,-360,180,Big Laser Flip (Laser Flip with 180 Body Rotation)
+
+# --- Double Kickflip Variations, Flip Rotation == 360 ---
+0,720,0,Double Kickflip
+
+# --- Double Heelflip Variations, Flip Rotation == -360 ---
+0,-720,0,Double Heelflip
+
+# --- Flip Variations with Body Rotations ---
+0,360,-180,Backside Flip (Backside 180 Kickflip)
+0,360,180,Frontside Flip (Frontside 180 Kickflip)
+-180,-360,-180,Backside Heelflip (Backside 180 Heelflip)
+180,-360,180,Frontside Heelflip (Frontside 180 Heelflip)
+
+# --- Big Spins / Big Flips ---
+-180,0,180,Bigspin (Backside 360 Shuvit with 180 Body Rotation)
+180,0,-180,Frontside Bigspin (Frontside 360 Shuvit with 180 Body Rotation)
+-180,360,180,Bigflip (Varial Kickflip with 180 Body Rotation)
+-180,-360,180,Inward Big Heel (Inward Heelflip with 180 Body Rotation)
+180,360,-180,Hardflip Backside 180
+180,-360,-180,Varial Heelflip Backside 180
+
+# --- 360 Tricks ---
+-360,0,0,360 Shuvit
+360,0,0,Frontside 360 Shuvit
+
+-360,0,180,Bigspin (360 Shuvit with 180 Body Rotation)
+
+
+
+# --- 540 Tricks ---
+-540,0,0,540 Shuvit
+540,0,0,Frontside 540 Shuvit
+-540,360,0,540 Flip
+-540,-360,0,540 Laser Flip
+-540,0,180,Bigger Spin (540 Shuvit with 180 Body Rotation)
+-540,360,180,Bigger Flip (540 Flip with 180 Body Rotation)
+-540,-360,180,Bigger Laser Flip (540 Laser Flip with 180 Body Rotation)
+
+# --- Double Flip Variations ---
+360,720,0,360 Double Kickflip
+360,-720,0,360 Double Heelflip
+360,720,-180,360 Double Kickflip Backside 180
+360,-720,-180,360 Double Heelflip Backside 180
+360,720,180,360 Double Kickflip Frontside 180
+360,-720,180,360 Double Heelflip Frontside 180
+540,720,0,540 Double Kickflip
+540,-720,0,540 Double Heelflip
+540,720,-180,540 Double Kickflip Backside 180
+540,-720,-180,540 Double Heelflip Backside 180
+540,720,180,540 Double Kickflip Frontside 180
+540,-720,180,540 Double Heelflip Frontside 180
+
+# --- Triple Flip Variations ---
+0,1080,0,Triple Kickflip
+0,-1080,0,Triple Heelflip
+0,1080,-180,Triple Kickflip Backside 180
+0,-1080,-180,Triple Heelflip Backside 180
+0,1080,180,Triple Kickflip Frontside 180
+0,-1080,180,Triple Heelflip Frontside 180
+
+# --- Body Varial Tricks ---
+0,0,-360,Backside 360 Body Varial
+0,0,360,Frontside 360 Body Varial
+0,360,-360,Kickflip 360 Body Varial
+0,-360,-360,Heelflip 360 Body Varial
+180,0,-360,Shuvit 360 Body Varial
+180,360,-360,Varial Kickflip 360 Body Varial
+180,-360,-360,Inward Heelflip 360 Body Varial
+-180,360,-360,Hardflip 360 Body Varial
+-180,-360,-360,Varial Heelflip 360 Body Varial
