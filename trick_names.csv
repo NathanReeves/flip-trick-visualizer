@@ -34,11 +34,12 @@ Spin Rotation,Flip Rotation,Body Rotation,Trick Name
 # --- Single Heelflip Variations, Flip Rotation == -360  ---
 -180,-360,0,Inward Heelflip
 180,-360,0,Varial Heelflip
--360,-360,0,Laser Flip
--360,-360,180,Big Laser Flip (Laser Flip with 180 Body Rotation)
+360,-360,0,Laser Flip
+360,-360,180,Big Laser Flip (Laser Flip with 180 Body Rotation)
 
 # --- Double Kickflip Variations, Flip Rotation == 360 ---
 0,720,0,Double Kickflip
+-180,720,0,Nightmare Flip
 
 # --- Double Heelflip Variations, Flip Rotation == -360 ---
 0,-720,0,Double Heelflip
@@ -106,3 +107,4 @@ Spin Rotation,Flip Rotation,Body Rotation,Trick Name
 180,-360,-360,Inward Heelflip 360 Body Varial
 -180,360,-360,Hardflip 360 Body Varial
 -180,-360,-360,Varial Heelflip 360 Body Varial
+0,-360,-180, Disco Flip
