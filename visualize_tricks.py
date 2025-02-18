@@ -2,6 +2,7 @@ import io
 import pandas as pd
 from dash import Dash, dcc, html, Input, Output, State
 import plotly.graph_objects as go
+import dash
 
 # Read CSV while ignoring commented lines.
 df = pd.read_csv("trick_names.csv", comment='#', skip_blank_lines=True)
@@ -15,10 +16,6 @@ app.layout = html.Div([
     # 1. Header Section
     html.Div([
         html.H1("Skateboarding Flatground Flip Tricks Visualization", style={"textAlign": "center", "margin": "0"}),
-        html.P(
-            "Click on a trick to isolate it. Then, use the options below to also show related tricks that share the same rotation values.",
-            style={"textAlign": "center", "margin": "5px 0"}
-        )
     ], style={"padding": "10px", "backgroundColor": "#f9f9f9"}),
 
     # 2. Control Panel
@@ -37,20 +34,7 @@ app.layout = html.Div([
         ], style={"flex": "1", "minWidth": "250px", "margin": "10px"}),
 
         html.Div([
-            html.Label("Show related tricks by:"),
-            dcc.Checklist(
-                id='filter-checklist',
-                options=[
-                    {'label': 'Spin Rotation', 'value': 'spin'},
-                    {'label': 'Flip Rotation', 'value': 'flip'}
-                ],
-                value=[],
-                labelStyle={'display': 'inline-block', 'margin-right': '20px'}
-            )
-        ], style={"flex": "1", "minWidth": "250px", "margin": "10px"}),
-
-        html.Div([
-            html.Button("Reset Filter", id='reset-button', n_clicks=0, style={'height': '40px'})
+            html.Button("Reset", id='reset-button', n_clicks=0, style={'height': '40px'})
         ], style={"flex": "1", "minWidth": "150px", "margin": "10px", "alignSelf": "center"})
     ], style={
         "display": "flex",
@@ -121,6 +105,16 @@ app.clientside_callback(
     State("camera-store", "data")
 )
 
+# --- Callback to reset the graph selection ---
+@app.callback(
+    Output('trick-graph', 'clickData'),
+    Input('reset-button', 'n_clicks')
+)
+def reset_selection(n_clicks):
+    if n_clicks > 0:
+        return None
+    return dash.no_update
+
 # --- Callback to update the graph and info panel, preserving camera ---
 @app.callback(
     [Output('trick-graph', 'figure'),
@@ -155,13 +149,20 @@ def update_graph(view, clickData, stored_camera):
                 'Spin Rotation: %{x}<br>' +
                 'Flip Rotation: %{y}<br>' +
                 'Body Rotation: %{z}<extra></extra>'
-            )
+            ),
+            name='Tricks'
         )
         fig = go.Figure(data=[scatter])
         scene_layout = dict(
             xaxis_title='Spin Rotation',
             yaxis_title='Flip Rotation',
-            zaxis_title='Body Rotation'
+            zaxis_title='Body Rotation',
+            xaxis=dict(tickmode='array', tickvals=[-1080, -900, -720, -540, -360, -180, 0, 180, 360, 540, 720, 900, 1080], 
+                      ticktext=['-1080°', '-900°', '-720°', '-540°', '-360°', '-180°', '0°', '180°', '360°', '540°', '720°', '900°', '1080°']),
+            yaxis=dict(tickmode='array', tickvals=[-1080, -900, -720, -540, -360, -180, 0, 180, 360, 540, 720, 900, 1080],
+                      ticktext=['-1080°', '-900°', '-720°', '-540°', '-360°', '-180°', '0°', '180°', '360°', '540°', '720°', '900°', '1080°']),
+            zaxis=dict(tickmode='array', tickvals=[-1080, -900, -720, -540, -360, -180, 0, 180, 360, 540, 720, 900, 1080],
+                      ticktext=['-1080°', '-900°', '-720°', '-540°', '-360°', '-180°', '0°', '180°', '360°', '540°', '720°', '900°', '1080°'])
         )
         if stored_camera:
             scene_layout["camera"] = stored_camera
@@ -191,12 +192,17 @@ def update_graph(view, clickData, stored_camera):
                 'Trick: %{text}<br>' +
                 'Spin Rotation: %{x}<br>' +
                 'Flip Rotation: %{y}<extra></extra>'
-            )
+            ),
+            name='Tricks'
         )
         fig = go.Figure(data=[scatter])
         fig.update_layout(
             xaxis_title='Spin Rotation',
             yaxis_title='Flip Rotation',
+            xaxis=dict(tickmode='array', tickvals=[-1080, -900, -720, -540, -360, -180, 0, 180, 360, 540, 720, 900, 1080],
+                      ticktext=['-1080°', '-900°', '-720°', '-540°', '-360°', '-180°', '0°', '180°', '360°', '540°', '720°', '900°', '1080°']),
+            yaxis=dict(tickmode='array', tickvals=[-1080, -900, -720, -540, -360, -180, 0, 180, 360, 540, 720, 900, 1080],
+                      ticktext=['-1080°', '-900°', '-720°', '-540°', '-360°', '-180°', '0°', '180°', '360°', '540°', '720°', '900°', '1080°']),
             margin=dict(l=0, r=0, b=0, t=0),
             uirevision="constant",
             legend=dict(
@@ -237,24 +243,41 @@ def update_graph(view, clickData, stored_camera):
         sizes = []
         spin_line_x, spin_line_y, spin_line_z = [], [], []
         flip_line_x, flip_line_y, flip_line_z = [], [], []
+        if use_3d:
+            body_line_x, body_line_y, body_line_z = [], [], []
+        else:
+            body_line_x = body_line_y = body_line_z = None
+
         for idx, row in data_df.iterrows():
-            if (row["Spin Rotation"] == selected_spin) or (row["Flip Rotation"] == selected_flip):
+            # A trick is highlighted if ANY of its rotations match
+            if (row["Spin Rotation"] == selected_spin or 
+                row["Flip Rotation"] == selected_flip or 
+                (use_3d and row["Body Rotation"] == clicked_trick["Body Rotation"])):
                 colors.append('red')
                 sizes.append(12)
             else:
                 colors.append('blue')
                 sizes.append(8)
+
             if idx != point_idx:
+                # Only connect if the specific rotation matches
                 if row["Spin Rotation"] == selected_spin:
                     spin_line_x += [clicked_trick["Spin Rotation"], row["Spin Rotation"], None]
                     spin_line_y += [clicked_trick["Flip Rotation"], row["Flip Rotation"], None]
                     if use_3d:
                         spin_line_z += [clicked_trick["Body Rotation"], row["Body Rotation"], None]
+
                 if row["Flip Rotation"] == selected_flip:
                     flip_line_x += [clicked_trick["Spin Rotation"], row["Spin Rotation"], None]
                     flip_line_y += [clicked_trick["Flip Rotation"], row["Flip Rotation"], None]
                     if use_3d:
                         flip_line_z += [clicked_trick["Body Rotation"], row["Body Rotation"], None]
+
+                # Add body rotation connections for 3D view
+                if use_3d and row["Body Rotation"] == clicked_trick["Body Rotation"]:
+                    body_line_x += [clicked_trick["Spin Rotation"], row["Spin Rotation"], None]
+                    body_line_y += [clicked_trick["Flip Rotation"], row["Flip Rotation"], None]
+                    body_line_z += [clicked_trick["Body Rotation"], row["Body Rotation"], None]
 
         fig.data[0].marker.color = colors
         fig.data[0].marker.size = [s * 1.5 for s in sizes]
@@ -278,6 +301,15 @@ def update_graph(view, clickData, stored_camera):
                     mode='lines',
                     line=dict(color='magenta', width=3),
                     name='Flip Connection'
+                ))
+            if body_line_x:  # Add body rotation connections
+                fig.add_trace(go.Scatter3d(
+                    x=body_line_x,
+                    y=body_line_y,
+                    z=body_line_z,
+                    mode='lines',
+                    line=dict(color='orange', width=3),
+                    name='Body Connection'
                 ))
         else:
             if spin_line_x:
