@@ -1,4 +1,5 @@
 # Skateboarding Flip Trick Visualizer
+Visualize all possible flatground flip trick combinations in 3D space
 
 Quick start:
 
