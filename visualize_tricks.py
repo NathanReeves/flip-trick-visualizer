@@ -9,29 +9,101 @@ df['Trick Name'] = df['Trick Name'].str.strip()
 
 # --- Build the Dash App ---
 app = Dash(__name__)
+
+# Updated layout using the structure from visualize_tricks_rough.py
 app.layout = html.Div([
-    html.H1("Skateboarding Flatground Flip Tricks Visualization"),
+    # 1. Header Section
     html.Div([
-        html.Label("View Mode: "),
-        dcc.RadioItems(
-            id='view-toggle',
-            options=[
-                {'label': '3D View', 'value': '3D'},
-                {'label': '2D View', 'value': '2D'}
-            ],
-            value='3D',
-            labelStyle={'display': 'inline-block', 'margin-right': '10px'}
+        html.H1("Skateboarding Flatground Flip Tricks Visualization", style={"textAlign": "center", "margin": "0"}),
+        html.P(
+            "Click on a trick to isolate it. Then, use the options below to also show related tricks that share the same rotation values.",
+            style={"textAlign": "center", "margin": "5px 0"}
         )
-    ], style={'padding': '10px'}),
+    ], style={"padding": "10px", "backgroundColor": "#f9f9f9"}),
+
+    # 2. Control Panel
+    html.Div([
+        html.Div([
+            html.Label("View Mode: "),
+            dcc.RadioItems(
+                id='view-toggle',
+                options=[
+                    {'label': '3D View', 'value': '3D'},
+                    {'label': '2D View', 'value': '2D'}
+                ],
+                value='3D',
+                labelStyle={'display': 'inline-block', 'margin-right': '10px'}
+            )
+        ], style={"flex": "1", "minWidth": "250px", "margin": "10px"}),
+
+        html.Div([
+            html.Label("Show related tricks by:"),
+            dcc.Checklist(
+                id='filter-checklist',
+                options=[
+                    {'label': 'Spin Rotation', 'value': 'spin'},
+                    {'label': 'Flip Rotation', 'value': 'flip'}
+                ],
+                value=[],
+                labelStyle={'display': 'inline-block', 'margin-right': '20px'}
+            )
+        ], style={"flex": "1", "minWidth": "250px", "margin": "10px"}),
+
+        html.Div([
+            html.Button("Reset Filter", id='reset-button', n_clicks=0, style={'height': '40px'})
+        ], style={"flex": "1", "minWidth": "150px", "margin": "10px", "alignSelf": "center"})
+    ], style={
+        "display": "flex",
+        "flexWrap": "wrap",
+        "justifyContent": "center",
+        "alignItems": "center",
+        "backgroundColor": "#f9f9f9"
+    }),
+
     # Hidden store to keep track of the latest camera settings
     dcc.Store(id="camera-store"),
-    dcc.Graph(id='trick-graph'),
-    html.Div(id='trick-info', style={
-        'padding': '10px',
-        'border': '1px solid #ccc',
-        'margin-top': '10px'
+
+    # 3. Main Content: Graph and Trick Info Panel
+    html.Div([
+        # Graph Container fills available space
+        html.Div([
+            dcc.Graph(
+                id='trick-graph',
+                style={
+                    "height": "calc(100vh - 250px)",  # Subtract approximate height of header + controls
+                    "width": "100%"
+                }
+            )
+        ], style={
+            "flex": "3",  # Takes up 75% of the space
+            "minWidth": "0"
+        }),
+        # Trick Info Panel - now horizontal
+        html.Div(id='trick-info', style={
+            'padding': '10px',
+            'border': '1px solid #ccc',
+            'margin-left': '10px',
+            'flex': '0.25',  # Takes up 25% of the space
+            'minWidth': '200px',
+            'overflowY': 'auto'  # Allows scrolling if content is too long
+        })
+    ], style={
+        "display": "flex",
+        "flexDirection": "row",  # Changed to row to place items horizontally
+        "flex": "1",
+        "width": "100%",
+        "padding": "10px",
+        "gap": "10px"  # Adds space between graph and info panel
     })
-])
+], style={
+    "display": "flex",
+    "flexDirection": "column",
+    "height": "100vh",
+    "width": "100%",
+    "margin": "0",
+    "padding": "0",
+    "overflow": "hidden"
+})
 
 # --- Clientside callback to update the camera-store from relayoutData ---
 app.clientside_callback(
@@ -58,15 +130,26 @@ app.clientside_callback(
     [State('camera-store', 'data')]
 )
 def update_graph(view, clickData, stored_camera):
-    if view == '3D':
+    # For 3D view, use full dataframe.
+    # For 2D view, filter out tricks that have body rotation not equal to zero.
+    use_3d = view == '3D'
+    if use_3d:
+        data_df = df
+    else:
+        data_df = df[df["Body Rotation"] == 0]
+
+    # Create the scatter plot using the filtered data.
+    if use_3d:
         scatter = go.Scatter3d(
-            x=df['Spin Rotation'],
-            y=df['Flip Rotation'],
-            z=df['Body Rotation'],
-            mode='markers',
-            marker=dict(size=8, color='blue', opacity=0.8),
-            text=df['Trick Name'],
-            customdata=df[['Spin Rotation', 'Flip Rotation', 'Body Rotation', 'Trick Name']].values,
+            x=data_df['Spin Rotation'],
+            y=data_df['Flip Rotation'],
+            z=data_df['Body Rotation'],
+            mode='markers+text',
+            marker=dict(size=12, color='blue', opacity=0.8),
+            text=data_df['Trick Name'],
+            textposition='top center',
+            textfont=dict(size=8, color='black'),
+            customdata=data_df[['Spin Rotation', 'Flip Rotation', 'Body Rotation', 'Trick Name']].values,
             hovertemplate=(
                 'Trick: %{text}<br>' +
                 'Spin Rotation: %{x}<br>' +
@@ -85,23 +168,25 @@ def update_graph(view, clickData, stored_camera):
         fig.update_layout(
             scene=scene_layout,
             margin=dict(l=0, r=0, b=0, t=0),
-            uirevision="constant",  # Preserve UI state across updates
+            uirevision="constant",
             legend=dict(
                 font=dict(size=12),
                 itemsizing='constant',
                 itemwidth=30,
                 x=1.0,
-                xanchor='right',
+                xanchor='right'
             )
         )
     else:
         scatter = go.Scatter(
-            x=df['Spin Rotation'],
-            y=df['Flip Rotation'],
-            mode='markers',
-            marker=dict(size=8, color='blue', opacity=0.8),
-            text=df['Trick Name'],
-            customdata=df[['Spin Rotation', 'Flip Rotation', 'Body Rotation', 'Trick Name']].values,
+            x=data_df['Spin Rotation'],
+            y=data_df['Flip Rotation'],
+            mode='markers+text',
+            marker=dict(size=12, color='blue', opacity=0.8),
+            text=data_df['Trick Name'],
+            textposition='top center',
+            textfont=dict(size=8, color='black'),
+            customdata=data_df[['Spin Rotation', 'Flip Rotation', 'Trick Name']].values,
             hovertemplate=(
                 'Trick: %{text}<br>' +
                 'Spin Rotation: %{x}<br>' +
@@ -119,91 +204,99 @@ def update_graph(view, clickData, stored_camera):
                 itemsizing='constant',
                 itemwidth=30,
                 x=1.0,
-                xanchor='right',
+                xanchor='right'
             )
         )
-    
-    # Default info message
+
+    # Default info message.
     info_content = html.Div("Click on a trick to get more information.", style={'font-style': 'italic'})
-    
-    # If a trick is clicked, update the info panel, highlight similar tricks, and add connection lines.
+
     if clickData is not None:
         point_data = clickData['points'][0]
         point_idx = point_data.get('pointIndex', point_data.get('pointNumber'))
-        if point_idx is not None:
-            clicked_trick = df.iloc[point_idx]
-            selected_spin = clicked_trick["Spin Rotation"]
-            selected_flip = clicked_trick["Flip Rotation"]
+        # If the index is no longer valid (e.g., clicked trick has nonzero body rotation and isn't in data_df), ignore clickData.
+        if point_idx is None or point_idx >= len(data_df):
+            return fig, info_content
 
-            info_content = html.Div([
-                html.H4(clicked_trick["Trick Name"]),
-                html.P(f"Spin Rotation: {clicked_trick['Spin Rotation']}"),
-                html.P(f"Flip Rotation: {clicked_trick['Flip Rotation']}"),
-                html.P(f"Body Rotation: {clicked_trick['Body Rotation']}")
-            ])
+        clicked_trick = data_df.iloc[point_idx]
+        selected_spin = clicked_trick["Spin Rotation"]
+        selected_flip = clicked_trick["Flip Rotation"]
 
-            colors = []
-            sizes = []
-            spin_line_x, spin_line_y, spin_line_z = [], [], []
-            flip_line_x, flip_line_y, flip_line_z = [], [], []
-            for idx, row in df.iterrows():
-                if (row["Spin Rotation"] == selected_spin) or (row["Flip Rotation"] == selected_flip):
-                    colors.append('red')
-                    sizes.append(12)
-                else:
-                    colors.append('blue')
-                    sizes.append(8)
-                if idx != point_idx:
-                    if row["Spin Rotation"] == selected_spin:
-                        spin_line_x += [clicked_trick["Spin Rotation"], row["Spin Rotation"], None]
-                        spin_line_y += [clicked_trick["Flip Rotation"], row["Flip Rotation"], None]
-                        if view == '3D':
-                            spin_line_z += [clicked_trick["Body Rotation"], row["Body Rotation"], None]
-                    if row["Flip Rotation"] == selected_flip:
-                        flip_line_x += [clicked_trick["Spin Rotation"], row["Spin Rotation"], None]
-                        flip_line_y += [clicked_trick["Flip Rotation"], row["Flip Rotation"], None]
-                        if view == '3D':
-                            flip_line_z += [clicked_trick["Body Rotation"], row["Body Rotation"], None]
-            # Update marker styling and add connection lines.
-            fig.data[0].marker.color = colors
-            fig.data[0].marker.size = sizes
+        # Build the info panel.
+        info_items = [
+            html.H4(clicked_trick["Trick Name"]),
+            html.P(f"Spin Rotation: {clicked_trick['Spin Rotation']}"),
+            html.P(f"Flip Rotation: {clicked_trick['Flip Rotation']}")
+        ]
+        if use_3d:
+            info_items.append(html.P(f"Body Rotation: {clicked_trick['Body Rotation']}"))
+        info_content = html.Div(info_items)
 
-            if view == '3D':
-                if spin_line_x:
-                    fig.add_trace(go.Scatter3d(
-                        x=spin_line_x,
-                        y=spin_line_y,
-                        z=spin_line_z,
-                        mode='lines',
-                        line=dict(color='green', width=3),
-                        name='Spin Connection'
-                    ))
-                if flip_line_x:
-                    fig.add_trace(go.Scatter3d(
-                        x=flip_line_x,
-                        y=flip_line_y,
-                        z=flip_line_z,
-                        mode='lines',
-                        line=dict(color='magenta', width=3),
-                        name='Flip Connection'
-                    ))
+        # Build connection lines and update marker styling.
+        colors = []
+        sizes = []
+        spin_line_x, spin_line_y, spin_line_z = [], [], []
+        flip_line_x, flip_line_y, flip_line_z = [], [], []
+        for idx, row in data_df.iterrows():
+            if (row["Spin Rotation"] == selected_spin) or (row["Flip Rotation"] == selected_flip):
+                colors.append('red')
+                sizes.append(12)
             else:
-                if spin_line_x:
-                    fig.add_trace(go.Scatter(
-                        x=spin_line_x,
-                        y=spin_line_y,
-                        mode='lines',
-                        line=dict(color='green', width=3),
-                        name='Spin Connection'
-                    ))
-                if flip_line_x:
-                    fig.add_trace(go.Scatter(
-                        x=flip_line_x,
-                        y=flip_line_y,
-                        mode='lines',
-                        line=dict(color='magenta', width=3),
-                        name='Flip Connection'
-                    ))
+                colors.append('blue')
+                sizes.append(8)
+            if idx != point_idx:
+                if row["Spin Rotation"] == selected_spin:
+                    spin_line_x += [clicked_trick["Spin Rotation"], row["Spin Rotation"], None]
+                    spin_line_y += [clicked_trick["Flip Rotation"], row["Flip Rotation"], None]
+                    if use_3d:
+                        spin_line_z += [clicked_trick["Body Rotation"], row["Body Rotation"], None]
+                if row["Flip Rotation"] == selected_flip:
+                    flip_line_x += [clicked_trick["Spin Rotation"], row["Spin Rotation"], None]
+                    flip_line_y += [clicked_trick["Flip Rotation"], row["Flip Rotation"], None]
+                    if use_3d:
+                        flip_line_z += [clicked_trick["Body Rotation"], row["Body Rotation"], None]
+
+        fig.data[0].marker.color = colors
+        fig.data[0].marker.size = [s * 1.5 for s in sizes]
+        fig.data[0].textfont = dict(size=8, color='black')
+
+        if use_3d:
+            if spin_line_x:
+                fig.add_trace(go.Scatter3d(
+                    x=spin_line_x,
+                    y=spin_line_y,
+                    z=spin_line_z,
+                    mode='lines',
+                    line=dict(color='green', width=3),
+                    name='Spin Connection'
+                ))
+            if flip_line_x:
+                fig.add_trace(go.Scatter3d(
+                    x=flip_line_x,
+                    y=flip_line_y,
+                    z=flip_line_z,
+                    mode='lines',
+                    line=dict(color='magenta', width=3),
+                    name='Flip Connection'
+                ))
+        else:
+            if spin_line_x:
+                fig.add_trace(go.Scatter(
+                    x=spin_line_x,
+                    y=spin_line_y,
+                    mode='lines',
+                    line=dict(color='green', width=3),
+                    name='Spin Connection'
+                ))
+            if flip_line_x:
+                fig.add_trace(go.Scatter(
+                    x=flip_line_x,
+                    y=flip_line_y,
+                    mode='lines',
+                    line=dict(color='magenta', width=3),
+                    name='Flip Connection'
+                ))
+
     return fig, info_content
 
 if __name__ == '__main__':
