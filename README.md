@@ -1,8 +1,10 @@
 # Skateboarding Flip Trick Visualizer
 
-Install and run:
+Quick start:
 
 ```bash
+git clone https://github.com/NathanReeves/flip-trick-visualizer.git
+cd flip-trick-visualizer
 pip install pandas dash plotly
 python visualize_tricks.py  
 ```
