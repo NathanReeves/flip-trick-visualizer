@@ -274,7 +274,8 @@
           marker: { size: markerSizes, color: markerColors, opacity: 0.6 },
           hovertemplate:
             'Trick: %{text}<br>Spin Rotation: %{x}<br>Flip Rotation: %{y}<br>Body Rotation: %{z}<extra></extra>',
-          name: "Confirmed Tricks"
+          name: "Confirmed Tricks",
+          showlegend: !selectedTrickName
         };
       } else {
         trace = {
@@ -286,11 +287,12 @@
           textposition: "top center",
           textfont: { size: 8, color: textColors },
           marker: { size: markerSizes, color: markerColors, opacity: 0.6 },
-          hoverinfo: "all",  // Show all hover info
-          hoverlabel: { namelength: -1 },  // Show full text
+          hoverinfo: "all",
+          hoverlabel: { namelength: -1 },
           hovertemplate:
             'Trick: %{text}<br>Spin Rotation: %{x}<br>Flip Rotation: %{y}<extra></extra>',
-          name: "Confirmed Tricks"
+          name: "Confirmed Tricks",
+          showlegend: !selectedTrickName
         };
       }
       
@@ -421,7 +423,7 @@
             camera: storedCamera || {}
           },
           showlegend: true,
-          hoverdistance: -1,
+          hoverdistance: 15,
           legend: { 
             title: { text: '' },
             y: 0.98,  // Move legend down from top
@@ -452,7 +454,7 @@
           showlegend: true,
           scaleanchor: "x",
           scaleratio: 1,
-          hoverdistance: -1,
+          hoverdistance: 15,
           hovermode: 'closest',
           legend: { 
             title: { text: '' },
@@ -490,7 +492,7 @@
           // Find the exact trick that was clicked by matching all properties
           const clickedTrick = getFilteredData().find(trick => 
               trick.name === point.text &&
-              Math.abs(trick.spin - point.x) < 0.1 &&  // Use small epsilon for floating point comparison
+              Math.abs(trick.spin - point.x) < 0.1 &&
               Math.abs(trick.flip - point.y) < 0.1
           );
           
