@@ -485,16 +485,15 @@
       // Clear existing handlers
       graphDiv.removeAllListeners && graphDiv.removeAllListeners();
       
-      // Click/touch handler function
-      function handleInteraction(data) {
+      // Click handler function
+      function handleClick(data) {
         if (data.points && data.points.length > 0) {
           const point = data.points[0];
           // Find the exact trick that was clicked by matching all properties
           const clickedTrick = getFilteredData().find(trick => 
               trick.name === point.text &&
               Math.abs(trick.spin - point.x) < 0.1 &&
-              Math.abs(trick.flip - point.y) < 0.1 &&
-              (currentView === "2D" || Math.abs(trick.body - point.z) < 0.1)
+              Math.abs(trick.flip - point.y) < 0.1
           );
           
           if (clickedTrick) {
@@ -512,8 +511,7 @@
       }
       
       // Attach event handlers using proper function references
-      graphDiv.on('plotly_click', handleInteraction);
-      graphDiv.on('plotly_hover', handleInteraction); // Add hover handler for mobile
+      graphDiv.on('plotly_click', handleClick);
       graphDiv.on('plotly_relayout', handleRelayout);
     }
     
