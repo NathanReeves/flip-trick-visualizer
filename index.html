@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Skateboarding Flatground Flip Tricks Visualization</title>
+  <script src="plotly-gl3d.min.js"></script>
+  <style>
+    /* Make sure the page fills the viewport */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    /* Remove "Aa" text from Plotly legend */
+    g.pointtext {
+      display: none;
+    }
+    /* Initial loading spinner style */
+    #initial-loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      transition: opacity 0.5s;
+    }
+    .spinner {
+      border: 16px solid #f3f3f3;
+      border-top: 16px solid #3498db;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 2s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    /* Main page layout */
+    #container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+    }
+    .header {
+      background-color: #f9f9f9;
+      padding: 10px;
+      text-align: center;
+    }
+    .control-panel {
+      background-color: #f9f9f9;
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+    #graph-info-container {
+      display: flex;
+      flex-direction: row;
+      padding: 10px;
+      gap: 10px;
+      flex: 1;
+      height: calc(100% - 150px);
+    }
+    #graph-div {
+      flex: 3;
+      min-width: 0;
+    }
+    #info-div {
+      flex: 0.25;
+      min-width: 200px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      overflow-y: auto;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <!-- Initial Loading Spinner -->
+  <div id="initial-loading">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+          <div class="spinner"></div>
+          <div class="loading-text">Loading Tricks...</div>
+      </div>
+  </div>
+  
+  <div id="container">
+    <!-- Header -->
+    <div class="header">
+       <h1>Skateboarding Flatground Flip Tricks Visualization</h1>
+    </div>
+    <!-- Control Panel -->
+    <div class="control-panel">
+       <div>
+         <label>View Mode: </label>
+         <input type="radio" id="view3d" name="view-toggle" value="3D" checked>
+         <label for="view3d">3D View</label>
+         <input type="radio" id="view2d" name="view-toggle" value="2D">
+         <label for="view2d">2D View</label>
+       </div>
+       <div>
+         <button id="reset-button" style="height: 40px;">Reset</button>
+       </div>
+    </div>
+    <!-- Graph and Info Panel -->
+    <div id="graph-info-container">
+       <div id="graph-div"></div>
+       <div id="info-div">Click on a trick to get more information.</div>
+    </div>
+  </div>
+  
+  <script>
+    /* -------------------------------------------------------------------------- */
+    /*                         Data and Global Variables                        */
+    /* -------------------------------------------------------------------------- */
+    
+    // Global state variables
+    let currentView = "3D"; // "3D" or "2D"
+    let selectedTrickName = null; // stores the trick name clicked by the user
+    let storedCamera = null;    // holds the 3D camera view information
+    let allTricks = []; // Will hold our trick data
+    
+    // Function to parse CSV data and create trick objects
+    function parseCSVData(csvText) {
+        const lines = csvText.split('\n');
+        const tricks = [];
+        
+        for (let line of lines) {
+            // Skip empty lines, comments, and header
+            if (!line.trim() || line.startsWith('#') || line.startsWith('Spin')) continue;
+            
+            const [spin, flip, body, ...nameParts] = line.split(',');
+            let name = nameParts.join(',').trim();
+            
+            // Check if the trick name has an asterisk
+            const hasAsterisk = name.includes('(*)');
+            // Remove (*) marker
+            name = name.replace('(*)', '').trim();
+            // Remove any remaining text inside parentheses
+            name = name.replace(/\s*\([^)]*\)/g, '').trim();
+            
+            if (name) {
+                tricks.push({
+                    name: name,
+                    spin: parseInt(spin),
+                    flip: parseInt(flip),
+                    body: parseInt(body),
+                    hasAsterisk: hasAsterisk
+                });
+            }
+        }
+        
+        return tricks;
+    }
+    
+    /* -------------------------------------------------------------------------- */
+    /*                       Utility and Helper Functions                       */
+    /* -------------------------------------------------------------------------- */
+    
+    // Given a trick object, return the default color.
+    function getDefaultMarkerColor(trick) {
+      if (!trick.name || trick.name.trim() === "") return "lightgray";
+      else if (trick.hasAsterisk) return "purple";
+      else return "blue";
+    }
+    
+    // Filter the data according to the view mode.
+    function getFilteredData() {
+        if (currentView === "2D") {
+            // In 2D view, only show tricks with zero body rotation
+            const tricks = allTricks.filter(trick => trick.body === 0);
+            
+            // Group remaining tricks by their x,y coordinates
+            const groups = {};
+            tricks.forEach(trick => {
+                const key = `${trick.spin},${trick.flip}`;
+                if (!groups[key]) groups[key] = [];
+                groups[key].push(trick);
+            });
+            
+            // For groups with multiple tricks, adjust their positions slightly
+            return tricks.map(trick => {
+                const key = `${trick.spin},${trick.flip}`;
+                const group = groups[key];
+                if (group.length > 1) {
+                    const index = group.indexOf(trick);
+                    // Offset each point slightly based on its position in the group
+                    const offset = (index - (group.length-1)/2) * 25;  // Increased offset for better separation
+                    return {
+                        ...trick,
+                        spin: trick.spin + offset
+                    };
+                }
+                return trick;
+            });
+        }
+        
+        // In 3D view, show all tricks
+        return allTricks;
+    }
+    
+    /* -------------------------------------------------------------------------- */
+    /*                           Main Graph Drawing Code                        */
+    /* -------------------------------------------------------------------------- */
+    
+    function drawGraph() {
+      const dataArr = getFilteredData();
+      const x = [];
+      const y = [];
+      const z = [];
+      const textArr = [];
+      const markerColors = [];
+      const markerSizes = [];
+      const textColors = [];
+      
+      // Check if a trick is selected
+      let selectedTrick = null;
+      if (selectedTrickName) {
+        selectedTrick = allTricks.find(trick => trick.name === selectedTrickName);
+      }
+      
+      // Build arrays for scatter trace(s)
+      dataArr.forEach(trick => {
+        x.push(trick.spin);
+        y.push(trick.flip);
+        if (currentView === "3D") {
+          z.push(trick.body);
+        }
+        textArr.push(trick.name);
+        
+        if (selectedTrick) {
+          if (trick.name === selectedTrick.name ||
+              (trick.spin === selectedTrick.spin && trick.spin !== 0) ||
+              (trick.flip === selectedTrick.flip && trick.flip !== 0) ||
+              (currentView === "3D" && trick.body === selectedTrick.body && trick.body !== 0)
+          ) {
+            markerColors.push("red");
+            markerSizes.push(24);
+            textColors.push("black");
+          } else {
+            markerColors.push("lightgray");
+            markerSizes.push(12);
+            textColors.push("rgba(0,0,0,0)");
+          }
+        } else {
+          markerColors.push(getDefaultMarkerColor(trick));
+          markerSizes.push(trick.name.trim() !== "" ? 20 : 8);
+          textColors.push("black");
+        }
+      });
+      
+      // Main scatter trace
+      let trace;
+      if (currentView === "3D") {
+        trace = {
+          type: "scatter3d",
+          mode: "markers+text",
+          x: x,
+          y: y,
+          z: z,
+          text: textArr,
+          textposition: "top center",
+          textfont: { size: 8, color: textColors },
+          marker: { size: markerSizes, color: markerColors, opacity: 0.6 },
+          hovertemplate:
+            'Trick: %{text}<br>Spin Rotation: %{x}<br>Flip Rotation: %{y}<br>Body Rotation: %{z}<extra></extra>',
+          name: "Confirmed Tricks"
+        };
+      } else {
+        trace = {
+          type: "scatter",
+          mode: "markers+text",
+          x: x,
+          y: y,
+          text: textArr,
+          textposition: "top center",
+          textfont: { size: 8, color: textColors },
+          marker: { size: markerSizes, color: markerColors, opacity: 0.6 },
+          hoverinfo: "all",  // Show all hover info
+          hoverlabel: { namelength: -1 },  // Show full text
+          hovertemplate:
+            'Trick: %{text}<br>Spin Rotation: %{x}<br>Flip Rotation: %{y}<extra></extra>',
+          name: "Confirmed Tricks"
+        };
+      }
+      
+      // Begin building the Plotly data array.
+      const plotData = [trace];
+      
+      // If a trick has been selected, add connection lines between the selected trick
+      // and other matching tricks (by rotation property).
+      if (selectedTrick) {
+        const spinLineX = [], spinLineY = [], spinLineZ = [];
+        const flipLineX = [], flipLineY = [], flipLineZ = [];
+        const bodyLineX = [], bodyLineY = [], bodyLineZ = [];
+        
+        dataArr.forEach(trick => {
+          if (trick.name === selectedTrick.name) return; // skip the selected trick
+          
+          // Spin connection
+          if (trick.spin === selectedTrick.spin && trick.spin !== 0) {
+            spinLineX.push(selectedTrick.spin, trick.spin, null);
+            spinLineY.push(selectedTrick.flip, trick.flip, null);
+            if (currentView === "3D") {
+              spinLineZ.push(selectedTrick.body, trick.body, null);
+            }
+          }
+          // Flip connection
+          if (trick.flip === selectedTrick.flip && trick.flip !== 0) {
+            flipLineX.push(selectedTrick.spin, trick.spin, null);
+            flipLineY.push(selectedTrick.flip, trick.flip, null);
+            if (currentView === "3D") {
+              flipLineZ.push(selectedTrick.body, trick.body, null);
+            }
+          }
+          // Body connection (only for 3D view)
+          if (currentView === "3D" &&
+              trick.body === selectedTrick.body && trick.body !== 0) {
+            bodyLineX.push(selectedTrick.spin, trick.spin, null);
+            bodyLineY.push(selectedTrick.flip, trick.flip, null);
+            bodyLineZ.push(selectedTrick.body, trick.body, null);
+          }
+        });
+        
+        if (spinLineX.length > 0) {
+          if (currentView === "3D") {
+            plotData.push({
+              type: "scatter3d",
+              mode: "lines",
+              x: spinLineX,
+              y: spinLineY,
+              z: spinLineZ,
+              line: { color: "green", width: 3 },
+              name: "Spin Connection",
+              hoverinfo: "skip"
+            });
+          } else {
+            plotData.push({
+              type: "scatter",
+              mode: "lines",
+              x: spinLineX,
+              y: spinLineY,
+              line: { color: "green", width: 3 },
+              name: "Spin Connection",
+              hoverinfo: "skip"
+            });
+          }
+        }
+        if (flipLineX.length > 0) {
+          if (currentView === "3D") {
+            plotData.push({
+              type: "scatter3d",
+              mode: "lines",
+              x: flipLineX,
+              y: flipLineY,
+              z: flipLineZ,
+              line: { color: "magenta", width: 3 },
+              name: "Flip Connection",
+              hoverinfo: "skip"
+            });
+          } else {
+            plotData.push({
+              type: "scatter",
+              mode: "lines",
+              x: flipLineX,
+              y: flipLineY,
+              line: { color: "magenta", width: 3 },
+              name: "Flip Connection",
+              hoverinfo: "skip"
+            });
+          }
+        }
+        if (currentView === "3D" && bodyLineX.length > 0) {
+          plotData.push({
+            type: "scatter3d",
+            mode: "lines",
+            x: bodyLineX,
+            y: bodyLineY,
+            z: bodyLineZ,
+            line: { color: "orange", width: 3 },
+            name: "Body Connection",
+            hoverinfo: "skip"
+          });
+        }
+      }
+      
+      // Layout configuration – different for 3D and 2D.
+      let layout;
+      if (currentView === "3D") {
+        layout = {
+          margin: { l: 0, r: 0, b: 0, t: 0 },
+          scene: {
+            xaxis: { 
+              title: "Spin Rotation", 
+              tickmode: "linear", 
+              dtick: 180,
+              range: [-360, 360]
+            },
+            yaxis: { 
+              title: "Flip Rotation", 
+              tickmode: "linear", 
+              dtick: 360,
+              range: [-720, 720]
+            },
+            zaxis: { 
+              title: "Body Rotation", 
+              tickmode: "linear", 
+              dtick: 180,
+              range: [-360, 360]
+            },
+            camera: storedCamera || {}
+          },
+          showlegend: true,
+          hoverdistance: -1,
+          legend: { 
+            title: { text: '' },
+            y: 0.98,  // Move legend down from top
+            padding: { t: 15 }  // Add top padding
+          }
+        };
+      } else {
+        layout = {
+          margin: { l: 50, r: 50, b: 50, t: 50 },
+          xaxis: { 
+            title: "Spin Rotation", 
+            tickmode: "linear", 
+            dtick: 180,
+            range: [-810, 810],
+            zeroline: true,
+            zerolinewidth: 2,
+            zerolinecolor: '#969696'
+          },
+          yaxis: { 
+            title: "Flip Rotation", 
+            tickmode: "linear", 
+            dtick: 360,
+            range: [-1170, 1170],
+            zeroline: true,
+            zerolinewidth: 2,
+            zerolinecolor: '#969696'
+          },
+          showlegend: true,
+          scaleanchor: "x",
+          scaleratio: 1,
+          hoverdistance: -1,
+          hovermode: 'closest',
+          legend: { 
+            title: { text: '' },
+            y: 0.98,  // Move legend down from top
+            padding: { t: 15 }  // Add top padding
+          }
+        };
+      }
+      
+      // Use Plotly.react to update the graph without completely reloading it.
+      Plotly.react("graph-div", plotData, layout, { responsive: true });
+      
+      // (Re)bind event handlers for clicks and camera (relayout) updates.
+      attachPlotEvents();
+      
+      // Update the info panel to reflect the selected trick (if any).
+      updateInfoPanel(selectedTrick);
+    }
+    
+    /* -------------------------------------------------------------------------- */
+    /*                             Event Handlers                               */
+    /* -------------------------------------------------------------------------- */
+    
+    // Bind the click handler to the graph.
+    function attachPlotEvents() {
+      const graphDiv = document.getElementById("graph-div");
+      
+      // Clear existing handlers
+      graphDiv.removeAllListeners && graphDiv.removeAllListeners();
+      
+      // Click handler function
+      function handleClick(data) {
+        if (data.points && data.points.length > 0) {
+          const point = data.points[0];
+          // Find the exact trick that was clicked by matching all properties
+          const clickedTrick = getFilteredData().find(trick => 
+              trick.name === point.text &&
+              Math.abs(trick.spin - point.x) < 0.1 &&  // Use small epsilon for floating point comparison
+              Math.abs(trick.flip - point.y) < 0.1
+          );
+          
+          if (clickedTrick) {
+            selectedTrickName = clickedTrick.name;
+            setTimeout(() => drawGraph(), 0);
+          }
+        }
+      }
+      
+      // Camera handler function
+      function handleRelayout(eventData) {
+        if (currentView === "3D" && eventData["scene.camera"]) {
+          storedCamera = eventData["scene.camera"];
+        }
+      }
+      
+      // Attach event handlers using proper function references
+      graphDiv.on('plotly_click', handleClick);
+      graphDiv.on('plotly_relayout', handleRelayout);
+    }
+    
+    // Update the info panel with details of the selected trick.
+    function updateInfoPanel(trick) {
+      const infoDiv = document.getElementById("info-div");
+      if (trick) {
+        let direction = "";
+        if (trick.spin < 0) direction = "Backside";
+        else if (trick.spin > 0) direction = "Frontside";
+        let infoHtml = `<h4>${trick.name}</h4>
+                        <p>Spin Rotation: ${trick.spin}</p>
+                        <p>Flip Rotation: ${trick.flip}</p>`;
+        if (currentView === "3D") {
+          infoHtml += `<p>Body Rotation: ${trick.body}</p>`;
+        }
+        if (direction) {
+          infoHtml += `<p>Direction: ${direction}</p>`;
+        }
+        infoDiv.innerHTML = infoHtml;
+      } else {
+        infoDiv.innerHTML = `<span>Click on a trick to get more information.</span>`;
+      }
+    }
+    
+    /* -------------------------------------------------------------------------- */
+    /*                         UI Control Event Listeners                       */
+    /* -------------------------------------------------------------------------- */
+    
+    // Change view mode when the radio buttons are clicked.
+    document.getElementsByName("view-toggle").forEach(radio => {
+      radio.addEventListener("click", function() {
+        currentView = this.value;
+        // If the currently selected trick is not in the filtered set, clear the selection.
+        const filtered = getFilteredData();
+        if (!filtered.find(trick => trick.name === selectedTrickName)) {
+          selectedTrickName = null;
+        }
+        drawGraph();
+      });
+    });
+    
+    // Reset selection when the Reset button is clicked.
+    document.getElementById("reset-button").addEventListener("click", function() {
+      selectedTrickName = null;
+      drawGraph();
+    });
+    
+    /* -------------------------------------------------------------------------- */
+    /*                        Initial Loading of the Graph                      */
+    /* -------------------------------------------------------------------------- */
+    
+    // Load the CSV file and initialize the visualization
+    async function initializeVisualization() {
+        const loadingSpinner = document.getElementById("initial-loading");
+        loadingSpinner.style.display = "flex";  // Show spinner
+        loadingSpinner.style.opacity = "1";
+        
+        try {
+            const response = await fetch('trick_names.csv');
+            const csvText = await response.text();
+            allTricks = parseCSVData(csvText);
+            
+            // Draw graph first
+            drawGraph();
+            
+            // Only hide spinner after graph is drawn
+            setTimeout(() => {
+                loadingSpinner.style.opacity = "0";
+                setTimeout(() => {
+                    loadingSpinner.style.display = "none";
+                }, 500); // Wait for fade out animation
+            }, 100); // Small delay to ensure graph is rendered
+            
+        } catch (error) {
+            console.error('Error loading trick data:', error);
+            document.getElementById('info-div').innerHTML = 'Error loading trick data. Please check the console.';
+            loadingSpinner.style.display = "none";  // Hide spinner on error
+        }
+    }
+    
+    // Start visualization when page loads
+    window.addEventListener("load", function() {
+        initializeVisualization();
+    });
+    
+  </script>
+</body>
+</html> 
