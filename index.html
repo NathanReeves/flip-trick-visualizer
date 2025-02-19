@@ -61,7 +61,15 @@
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 10px;
+      gap: 30px;
+    }
+    /* Add specific styling for control groups */
+    .control-group {
+      padding: 0 10px;
+      border-right: 1px solid #ccc;
+    }
+    .control-group:last-child {
+      border-right: none;
     }
     #graph-info-container {
       display: flex;
@@ -101,14 +109,39 @@
     </div>
     <!-- Control Panel -->
     <div class="control-panel">
-       <div>
+       <div class="control-group">
          <label>View Mode: </label>
          <input type="radio" id="view3d" name="view-toggle" value="3D" checked>
          <label for="view3d">3D View</label>
          <input type="radio" id="view2d" name="view-toggle" value="2D">
          <label for="view2d">2D View</label>
        </div>
-       <div>
+       
+       <!-- New 2D Body Rotation Filter (visible only when 2D view is selected) -->
+       <div id="body-rotation-container" class="control-group" style="display: none;">
+         <label>Body Rotation (2D filter): </label>
+         <select id="body-rotation-filter">
+           <option value="0">No Rotation</option>
+           <option value="180" data-fs="FS 180°" data-bs="BS 180°">FS 180°</option>
+           <option value="-180" data-fs="BS 180°" data-bs="FS 180°">BS 180°</option>
+           <option value="360" data-fs="FS 360°" data-bs="BS 360°">FS 360°</option>
+           <option value="-360" data-fs="BS 360°" data-bs="FS 360°">BS 360°</option>
+           <option value="540" data-fs="FS 540°" data-bs="BS 540°">FS 540°</option>
+           <option value="-540" data-fs="BS 540°" data-bs="FS 540°">BS 540°</option>
+           <option value="720" data-fs="FS 720°" data-bs="BS 720°">FS 720°</option>
+           <option value="-720" data-fs="BS 720°" data-bs="FS 720°">BS 720°</option>
+         </select>
+       </div>
+       
+       <!-- Existing Stance Toggle -->
+       <div class="control-group">
+         <label>Stance: </label>
+         <input type="radio" id="stanceGoofy" name="stance-toggle" value="Goofy" checked>
+         <label for="stanceGoofy">Goofy</label>
+         <input type="radio" id="stanceRegular" name="stance-toggle" value="Regular">
+         <label for="stanceRegular">Regular</label>
+       </div>
+       <div class="control-group">
          <button id="reset-button" style="height: 40px;">Reset</button>
        </div>
     </div>
@@ -126,14 +159,18 @@
     
     // Global state variables
     let currentView = "3D"; // "3D" or "2D"
-    let selectedTrickName = null; // stores the trick name clicked by the user
+    let currentStance = "Goofy"; // "Goofy" or "Regular", default is "Goofy"
+    let selectedTrickId = null; // stores the trick id clicked by the user
     let storedCamera = null;    // holds the 3D camera view information
     let allTricks = []; // Will hold our trick data
+    let current2DBodyRotation = 0; // 2D filter for Body Rotation (default 0°)
     
-    // Function to parse CSV data and create trick objects
+    // Function to parse CSV data and create trick objects.
+    // Now adds a unique id to each trick.
     function parseCSVData(csvText) {
         const lines = csvText.split('\n');
         const tricks = [];
+        let idCounter = 0;
         
         for (let line of lines) {
             // Skip empty lines, comments, and header
@@ -151,6 +188,7 @@
             
             if (name) {
                 tricks.push({
+                    id: idCounter++,
                     name: name,
                     spin: parseInt(spin),
                     flip: parseInt(flip),
@@ -167,20 +205,40 @@
     /*                       Utility and Helper Functions                       */
     /* -------------------------------------------------------------------------- */
     
-    // Given a trick object, return the default color.
+    // Given a trick object, return the default marker color.
     function getDefaultMarkerColor(trick) {
       if (!trick.name || trick.name.trim() === "") return "lightgray";
       else if (trick.hasAsterisk) return "purple";
       else return "blue";
     }
     
+    // Returns the displayed trick name based on current stance.
+    // In "Regular" stance, if a partner trick exists (mirror image), use its name.
+    function getDisplayedName(trick) {
+      if (currentStance === "Goofy") {
+          return trick.name;
+      } else {
+          // For Regular stance, attempt to find a partner trick with negated rotations.
+          const partner = allTricks.find(t => 
+              t.spin === -trick.spin && 
+              t.flip === -trick.flip && 
+              t.body === -trick.body
+          );
+          if (partner) {
+              return partner.name;
+          } else {
+              return trick.name;
+          }
+      }
+    }
+    
     // Filter the data according to the view mode.
     function getFilteredData() {
         if (currentView === "2D") {
-            // In 2D view, only show tricks with zero body rotation
-            const tricks = allTricks.filter(trick => trick.body === 0);
+            // In 2D view, only show tricks with the selected Body Rotation value.
+            const tricks = allTricks.filter(trick => trick.body === current2DBodyRotation);
             
-            // Group remaining tricks by their x,y coordinates
+            // Group remaining tricks by their x,y coordinates (spin, flip)
             const groups = {};
             tricks.forEach(trick => {
                 const key = `${trick.spin},${trick.flip}`;
@@ -195,7 +253,7 @@
                 if (group.length > 1) {
                     const index = group.indexOf(trick);
                     // Offset each point slightly based on its position in the group
-                    const offset = (index - (group.length-1)/2) * 25;  // Increased offset for better separation
+                    const offset = (index - (group.length - 1) / 2) * 25;
                     return {
                         ...trick,
                         spin: trick.spin + offset
@@ -222,11 +280,12 @@
       const markerColors = [];
       const markerSizes = [];
       const textColors = [];
+      const customData = []; // to hold trick id for each point
       
-      // Check if a trick is selected
+      // Check if a trick is selected using selectedTrickId
       let selectedTrick = null;
-      if (selectedTrickName) {
-        selectedTrick = allTricks.find(trick => trick.name === selectedTrickName);
+      if (selectedTrickId !== null) {
+        selectedTrick = allTricks.find(trick => trick.id === selectedTrickId);
       }
       
       // Build arrays for scatter trace(s)
@@ -236,21 +295,48 @@
         if (currentView === "3D") {
           z.push(trick.body);
         }
-        textArr.push(trick.name);
+        textArr.push(getDisplayedName(trick));
+        customData.push(trick.id);
         
         if (selectedTrick) {
-          if (trick.name === selectedTrick.name ||
-              (trick.spin === selectedTrick.spin && trick.spin !== 0) ||
-              (trick.flip === selectedTrick.flip && trick.flip !== 0) ||
-              (currentView === "3D" && trick.body === selectedTrick.body && trick.body !== 0)
-          ) {
-            markerColors.push("red");
-            markerSizes.push(24);
-            textColors.push("black");
-          } else {
+          // Determine if the trick should be highlighted
+          let isSelected = false;
+          // Skip highlighting for unnamed tricks
+          if (!trick.name || trick.name.trim() === "") {
             markerColors.push("lightgray");
-            markerSizes.push(12);
+            markerSizes.push(5);
             textColors.push("rgba(0,0,0,0)");
+          } else {
+            // Check if this trick is the selected trick or, in Regular mode, its mirror partner.
+            if (trick.id === selectedTrick.id) {
+                isSelected = true;
+            } else if (currentStance === "Regular" &&
+                       trick.spin === -selectedTrick.spin &&
+                       trick.flip === -selectedTrick.flip &&
+                       (currentView === "3D" ? trick.body === -selectedTrick.body : true)
+            ) {
+                isSelected = true;
+            }
+            // Additional connection conditions based on current stance.
+            if (currentStance === "Regular") {
+                if (trick.spin === -selectedTrick.spin && trick.spin !== 0) isSelected = true;
+                if (trick.flip === -selectedTrick.flip && trick.flip !== 0) isSelected = true;
+                if (currentView === "3D" && trick.body === -selectedTrick.body && trick.body !== 0) isSelected = true;
+            } else {
+                if (trick.spin === selectedTrick.spin && trick.spin !== 0) isSelected = true;
+                if (trick.flip === selectedTrick.flip && trick.flip !== 0) isSelected = true;
+                if (currentView === "3D" && trick.body === selectedTrick.body && trick.body !== 0) isSelected = true;
+            }
+            
+            if (isSelected) {
+              markerColors.push("red");
+              markerSizes.push(24);
+              textColors.push("black");
+            } else {
+              markerColors.push("lightgray");
+              markerSizes.push(5);
+              textColors.push("rgba(0,0,0,0)");
+            }
           }
         } else {
           markerColors.push(getDefaultMarkerColor(trick));
@@ -269,13 +355,14 @@
           y: y,
           z: z,
           text: textArr,
+          customdata: customData,
           textposition: "top center",
           textfont: { size: 8, color: textColors },
           marker: { size: markerSizes, color: markerColors, opacity: 0.6 },
           hovertemplate:
             'Trick: %{text}<br>Spin Rotation: %{x}<br>Flip Rotation: %{y}<br>Body Rotation: %{z}<extra></extra>',
           name: "Confirmed Tricks",
-          showlegend: !selectedTrickName
+          showlegend: !selectedTrickId
         };
       } else {
         trace = {
@@ -284,6 +371,7 @@
           x: x,
           y: y,
           text: textArr,
+          customdata: customData,
           textposition: "top center",
           textfont: { size: 8, color: textColors },
           marker: { size: markerSizes, color: markerColors, opacity: 0.6 },
@@ -292,45 +380,65 @@
           hovertemplate:
             'Trick: %{text}<br>Spin Rotation: %{x}<br>Flip Rotation: %{y}<extra></extra>',
           name: "Confirmed Tricks",
-          showlegend: !selectedTrickName
+          showlegend: !selectedTrickId
         };
       }
-      
+      trace.uid = 'trace_' + new Date().getTime();
       // Begin building the Plotly data array.
       const plotData = [trace];
       
-      // If a trick has been selected, add connection lines between the selected trick
-      // and other matching tricks (by rotation property).
+      // If a trick has been selected, add connection lines.
       if (selectedTrick) {
         const spinLineX = [], spinLineY = [], spinLineZ = [];
         const flipLineX = [], flipLineY = [], flipLineZ = [];
         const bodyLineX = [], bodyLineY = [], bodyLineZ = [];
         
         dataArr.forEach(trick => {
-          if (trick.name === selectedTrick.name) return; // skip the selected trick
+          if (trick.id === selectedTrick.id) return; // skip the selected trick
+          if (!trick.name || trick.name.trim() === "") return; // skip unnamed tricks
           
-          // Spin connection
-          if (trick.spin === selectedTrick.spin && trick.spin !== 0) {
-            spinLineX.push(selectedTrick.spin, trick.spin, null);
-            spinLineY.push(selectedTrick.flip, trick.flip, null);
-            if (currentView === "3D") {
-              spinLineZ.push(selectedTrick.body, trick.body, null);
+          if (currentStance === "Regular") {
+            // In Regular mode, connect with mirror images (negated rotations)
+            if (trick.spin === -selectedTrick.spin && trick.spin !== 0) {
+              spinLineX.push(selectedTrick.spin, trick.spin, null);
+              spinLineY.push(selectedTrick.flip, trick.flip, null);
+              if (currentView === "3D") {
+                spinLineZ.push(selectedTrick.body, trick.body, null);
+              }
             }
-          }
-          // Flip connection
-          if (trick.flip === selectedTrick.flip && trick.flip !== 0) {
-            flipLineX.push(selectedTrick.spin, trick.spin, null);
-            flipLineY.push(selectedTrick.flip, trick.flip, null);
-            if (currentView === "3D") {
-              flipLineZ.push(selectedTrick.body, trick.body, null);
+            if (trick.flip === -selectedTrick.flip && trick.flip !== 0) {
+              flipLineX.push(selectedTrick.spin, trick.spin, null);
+              flipLineY.push(selectedTrick.flip, trick.flip, null);
+              if (currentView === "3D") {
+                flipLineZ.push(selectedTrick.body, trick.body, null);
+              }
             }
-          }
-          // Body connection (only for 3D view)
-          if (currentView === "3D" &&
-              trick.body === selectedTrick.body && trick.body !== 0) {
-            bodyLineX.push(selectedTrick.spin, trick.spin, null);
-            bodyLineY.push(selectedTrick.flip, trick.flip, null);
-            bodyLineZ.push(selectedTrick.body, trick.body, null);
+            if (currentView === "3D" && trick.body === -selectedTrick.body && trick.body !== 0) {
+              bodyLineX.push(selectedTrick.spin, trick.spin, null);
+              bodyLineY.push(selectedTrick.flip, trick.flip, null);
+              bodyLineZ.push(selectedTrick.body, trick.body, null);
+            }
+          } else {
+            // Goofy mode: use direct matching rotations.
+            if (trick.spin === selectedTrick.spin && trick.spin !== 0) {
+              spinLineX.push(selectedTrick.spin, trick.spin, null);
+              spinLineY.push(selectedTrick.flip, trick.flip, null);
+              if (currentView === "3D") {
+                spinLineZ.push(selectedTrick.body, trick.body, null);
+              }
+            }
+            if (trick.flip === selectedTrick.flip && trick.flip !== 0) {
+              flipLineX.push(selectedTrick.spin, trick.spin, null);
+              flipLineY.push(selectedTrick.flip, trick.flip, null);
+              if (currentView === "3D") {
+                flipLineZ.push(selectedTrick.body, trick.body, null);
+              }
+            }
+            if (currentView === "3D" && trick.body === selectedTrick.body && trick.body !== 0) {
+              bodyLineX.push(selectedTrick.spin, trick.spin, null);
+              bodyLineY.push(selectedTrick.flip, trick.flip, null);
+              bodyLineZ.push(selectedTrick.body, trick.body, null);
+            }
           }
         });
         
@@ -412,7 +520,7 @@
               title: "Flip Rotation", 
               tickmode: "linear", 
               dtick: 360,
-              range: [-720, 720]
+              range: currentStance === "Regular" ? [720, -720] : [-720, 720]
             },
             zaxis: { 
               title: "Body Rotation", 
@@ -426,8 +534,14 @@
           hoverdistance: 15,
           legend: { 
             title: { text: '' },
-            y: 0.98,  // Move legend down from top
-            padding: { t: 15 }  // Add top padding
+            y: 0.98,
+            padding: { t: 15 },
+            xanchor: 'right',
+            x: 0.99,
+            bgcolor: 'rgba(255, 255, 255, 0.8)',
+            bordercolor: 'rgba(0, 0, 0, 0.2)',
+            borderwidth: 1,
+            font: { size: 10 }  // Smaller font size
           }
         };
       } else {
@@ -446,7 +560,7 @@
             title: "Flip Rotation", 
             tickmode: "linear", 
             dtick: 360,
-            range: [-1170, 1170],
+            range: currentStance === "Regular" ? [1170, -1170] : [-1170, 1170],
             zeroline: true,
             zerolinewidth: 2,
             zerolinecolor: '#969696'
@@ -458,8 +572,14 @@
           hovermode: 'closest',
           legend: { 
             title: { text: '' },
-            y: 0.98,  // Move legend down from top
-            padding: { t: 15 }  // Add top padding
+            y: 0.98,
+            padding: { t: 15 },
+            xanchor: 'right',
+            x: 0.99,
+            bgcolor: 'rgba(255, 255, 255, 0.8)',
+            bordercolor: 'rgba(0, 0, 0, 0.2)',
+            borderwidth: 1,
+            font: { size: 10 }  // Smaller font size
           }
         };
       }
@@ -482,22 +602,19 @@
     function attachPlotEvents() {
       const graphDiv = document.getElementById("graph-div");
       
-      // Clear existing handlers
-      graphDiv.removeAllListeners && graphDiv.removeAllListeners();
+      // Clear existing handlers if any. Plotly doesn't have removeAllListeners, so this line is conditional.
+      if(graphDiv.removeAllListeners) {
+         graphDiv.removeAllListeners();
+      }
       
       // Click handler function
       function handleClick(data) {
         if (data.points && data.points.length > 0) {
           const point = data.points[0];
-          // Find the exact trick that was clicked by matching all properties
-          const clickedTrick = getFilteredData().find(trick => 
-              trick.name === point.text &&
-              Math.abs(trick.spin - point.x) < 0.1 &&
-              Math.abs(trick.flip - point.y) < 0.1
-          );
-          
+          const trickId = point.customdata;
+          const clickedTrick = allTricks.find(trick => trick.id === trickId);
           if (clickedTrick) {
-            selectedTrickName = clickedTrick.name;
+            selectedTrickId = clickedTrick.id;
             setTimeout(() => drawGraph(), 0);
           }
         }
@@ -522,7 +639,7 @@
         let direction = "";
         if (trick.spin < 0) direction = "Backside";
         else if (trick.spin > 0) direction = "Frontside";
-        let infoHtml = `<h4>${trick.name}</h4>
+        let infoHtml = `<h4>${getDisplayedName(trick)}</h4>
                         <p>Spin Rotation: ${trick.spin}</p>
                         <p>Flip Rotation: ${trick.flip}</p>`;
         if (currentView === "3D") {
@@ -545,18 +662,59 @@
     document.getElementsByName("view-toggle").forEach(radio => {
       radio.addEventListener("click", function() {
         currentView = this.value;
-        // If the currently selected trick is not in the filtered set, clear the selection.
-        const filtered = getFilteredData();
-        if (!filtered.find(trick => trick.name === selectedTrickName)) {
-          selectedTrickName = null;
+        
+        // Toggle display of the body rotation filter for 2D view.
+        const rotationContainer = document.getElementById("body-rotation-container");
+        if (currentView === "2D") {
+          rotationContainer.style.display = "inline-block";
+          // Clear any selected trick when switching to 2D
+          selectedTrickId = null;
+        } else {
+          rotationContainer.style.display = "none";
         }
+        
+        // Also clear selection if the currently selected trick is not valid in the new filter.
+        const filtered = getFilteredData();
+        if (!filtered.find(trick => trick.id === selectedTrickId)) {
+          selectedTrickId = null;
+        }
+        drawGraph();
+      });
+    });
+    
+    // Listen for changes on the Body Rotation filter select control.
+    document.getElementById("body-rotation-filter").addEventListener("change", function() {
+        current2DBodyRotation = parseInt(this.value, 10);
+        // Clear any selected trick so that all trick labels appear.
+        selectedTrickId = null;
+        drawGraph();
+    });
+    
+    // Change stance when the stance radio buttons are clicked.
+    document.getElementsByName("stance-toggle").forEach(radio => {
+      radio.addEventListener("click", function() {
+        currentStance = this.value;
+        
+        // Update body rotation filter labels based on stance
+        const select = document.getElementById("body-rotation-filter");
+        const options = select.getElementsByTagName("option");
+        
+        for (let option of options) {
+          if (option.value === "0") continue; // Skip "No Rotation" option
+          
+          // Set the text based on stance
+          option.textContent = currentStance === "Regular" ? 
+            option.getAttribute("data-bs") : 
+            option.getAttribute("data-fs");
+        }
+        
         drawGraph();
       });
     });
     
     // Reset selection when the Reset button is clicked.
     document.getElementById("reset-button").addEventListener("click", function() {
-      selectedTrickName = null;
+      selectedTrickId = null;
       drawGraph();
     });
     
@@ -574,6 +732,36 @@
             const response = await fetch('trick_names.csv');
             const csvText = await response.text();
             allTricks = parseCSVData(csvText);
+            
+            // Generate all possible rotation combinations
+            let idCounter = allTricks.length;
+            const spinRange = [-1080, -900, -720, -540, -360, -180, 0, 180, 360, 540, 720, 900, 1080];
+            const flipRange = [-720, -360, 0, 360, 720];
+            const bodyRange = [-1080, -900, -720, -540, -360, -180, 0, 180, 360, 540, 720, 900, 1080];
+            
+            // Create a set of existing combinations for quick lookup
+            const existingCombos = new Set(
+                allTricks.map(trick => `${trick.spin},${trick.flip},${trick.body}`)
+            );
+            
+            // Generate all combinations and add if they don't exist
+            for (let spin of spinRange) {
+                for (let flip of flipRange) {
+                    for (let body of bodyRange) {
+                        const comboKey = `${spin},${flip},${body}`;
+                        if (!existingCombos.has(comboKey)) {
+                            allTricks.push({
+                                id: idCounter++,
+                                name: "",  // Empty name for unlisted tricks
+                                spin: spin,
+                                flip: flip,
+                                body: body,
+                                unlisted: true
+                            });
+                        }
+                    }
+                }
+            }
             
             // Draw graph first
             drawGraph();
@@ -600,4 +788,4 @@
     
   </script>
 </body>
-</html> 
+</html>
