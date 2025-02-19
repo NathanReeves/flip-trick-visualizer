@@ -3,26 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <title>Skateboarding Flatground Flip Tricks Visualization</title>
+  <!-- Import Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <script src="plotly-gl3d.min.js"></script>
   <style>
-    /* Make sure the page fills the viewport */
+    /* Global Reset */
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Page Background and Global Font */
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #111111, #1a1a1a, #222222);
+      color: #fff;
     }
+    
     /* Remove "Aa" text from Plotly legend */
     g.pointtext {
       display: none;
     }
-    /* Initial loading spinner style */
+    
+    /* Initial Loading Spinner Style */
     #initial-loading {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: white;
+      background: rgba(20, 20, 20, 0.9);
       z-index: 9999;
       display: flex;
       align-items: center;
@@ -31,46 +43,108 @@
       transition: opacity 0.5s;
     }
     .spinner {
-      border: 16px solid #f3f3f3;
-      border-top: 16px solid #3498db;
+      border: 8px solid rgba(255, 255, 255, 0.3);
+      border-top: 8px solid #fff;
       border-radius: 50%;
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       animation: spin 2s linear infinite;
     }
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-    /* Main page layout */
+    
+    /* Main Page Container */
     #container {
       display: flex;
       flex-direction: column;
       height: 100%;
       width: 100%;
+      padding: 20px;
     }
+    
+    /* Header Styling */
     .header {
-      background-color: #f9f9f9;
-      padding: 10px;
+      background: rgba(40, 40, 40, 0.6);
+      padding: 20px;
+      margin-bottom: 10px;
       text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
+    
+    .header h1 {
+      font-size: 2em;
+      letter-spacing: 1px;
+      color: #fff;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      margin: 0;
+    }
+    
+    /* Control Panel Styling */
     .control-panel {
-      background-color: #f9f9f9;
-      padding: 10px;
+      background: rgba(40, 40, 40, 0.6);
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      border-radius: 8px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
       gap: 30px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
-    /* Add specific styling for control groups */
+    
     .control-group {
       padding: 0 10px;
-      border-right: 1px solid #ccc;
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
     }
     .control-group:last-child {
       border-right: none;
     }
+    .control-group label {
+      font-weight: 600;
+      margin-right: 5px;
+    }
+    
+    /* Style for Select Control (Body Rotation) */
+    #body-rotation-container select {
+      background: rgba(60, 60, 60, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 8px 12px;
+      border-radius: 5px;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      font-style: normal;
+      outline: none;
+    }
+    
+    #body-rotation-container select:focus {
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+    }
+    
+    /* Reset Button Styling */
+    #reset-button {
+      background: linear-gradient(45deg, #404040, #303030);
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    #reset-button:hover {
+      background: linear-gradient(45deg, #505050, #404040);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    }
+    
+    /* Graph and Info Panel Container */
     #graph-info-container {
       display: flex;
       flex-direction: row;
@@ -79,18 +153,41 @@
       flex: 1;
       height: calc(100% - 150px);
     }
+    
+    /* Graph Div (attempting a glassmorphism effect) */
     #graph-div {
       flex: 3;
       min-width: 0;
+      background: rgba(30, 30, 30, 0.7);
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
     }
+    
+    /* Info Div Styling */
     #info-div {
       flex: 0.25;
       min-width: 200px;
-      padding: 10px;
-      border: 1px solid #ccc;
+      padding: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
       overflow-y: auto;
-      font-style: italic;
+      background: rgba(30, 30, 30, 0.8);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
     }
+    
+    /* Scrollbar Style for Info Panel */
+    #info-div::-webkit-scrollbar {
+      width: 6px;
+    }
+    #info-div::-webkit-scrollbar-track {
+      background: rgba(60, 60, 60, 0.3);
+      border-radius: 3px;
+    }
+    #info-div::-webkit-scrollbar-thumb {
+      background: rgba(100, 100, 100, 0.5);
+      border-radius: 3px;
+    }
+    
   </style>
 </head>
 <body>
@@ -98,7 +195,7 @@
   <div id="initial-loading">
       <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
           <div class="spinner"></div>
-          <div class="loading-text">Loading Tricks...</div>
+          <div class="loading-text" style="font-size: 18px; font-weight:600;">Loading Tricks...</div>
       </div>
   </div>
   
@@ -636,14 +733,25 @@
     function updateInfoPanel(trick) {
       const infoDiv = document.getElementById("info-div");
       if (trick) {
+        // In Regular mode, we display the mirror (negated) rotations.
+        let displaySpin = trick.spin;
+        let displayFlip = trick.flip;
+        let displayBody = trick.body;
+        if (currentStance === "Regular") {
+          displaySpin = -trick.spin;
+          displayFlip = -trick.flip;
+          displayBody = -trick.body;
+        }
+        
         let direction = "";
-        if (trick.spin < 0) direction = "Backside";
-        else if (trick.spin > 0) direction = "Frontside";
+        if (displaySpin < 0) direction = "Backside";
+        else if (displaySpin > 0) direction = "Frontside";
+        
         let infoHtml = `<h4>${getDisplayedName(trick)}</h4>
-                        <p>Spin Rotation: ${trick.spin}</p>
-                        <p>Flip Rotation: ${trick.flip}</p>`;
+                        <p>Spin Rotation: ${displaySpin}</p>
+                        <p>Flip Rotation: ${displayFlip}</p>`;
         if (currentView === "3D") {
-          infoHtml += `<p>Body Rotation: ${trick.body}</p>`;
+          infoHtml += `<p>Body Rotation: ${displayBody}</p>`;
         }
         if (direction) {
           infoHtml += `<p>Direction: ${direction}</p>`;
