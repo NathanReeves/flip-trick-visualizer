@@ -768,8 +768,8 @@
         }
         
         let direction = "";
-        if (displaySpin < 0) direction = "Backside";
-        else if (displaySpin > 0) direction = "Frontside";
+        if (trick.spin < 0) direction = "Backside";
+        else if (trick.spin > 0) direction = "Frontside";
         
         let infoHtml = `<h4>${trick.name}</h4>
                         <p>Spin Rotation: ${displaySpin}</p>
