@@ -404,25 +404,27 @@
             markerSizes.push(5);
             textColors.push("rgba(0,0,0,0)");
           } else {
-            // Check if this trick is the selected trick or, in Regular mode, its mirror partner.
-            if (trick.id === selectedTrick.id) {
-                isSelected = true;
-            } else if (currentStance === "Regular" &&
-                       trick.spin === -selectedTrick.spin &&
-                       trick.flip === -selectedTrick.flip &&
-                       (currentView === "3D" ? trick.body === -selectedTrick.body : true)
-            ) {
-                isSelected = true;
-            }
-            // Additional connection conditions based on current stance.
+            // Check if this trick is the selected trick or, in Regular mode, its mirror partner
             if (currentStance === "Regular") {
-                if (trick.spin === -selectedTrick.spin && trick.spin !== 0) isSelected = true;
-                if (trick.flip === -selectedTrick.flip && trick.flip !== 0) isSelected = true;
-                if (currentView === "3D" && trick.body === -selectedTrick.body && trick.body !== 0) isSelected = true;
+              // In Regular mode, only highlight tricks with negated rotations
+              if (trick.spin === -selectedTrick.spin &&
+                  trick.flip === -selectedTrick.flip &&
+                  (currentView === "3D" ? trick.body === -selectedTrick.body : true)) {
+                isSelected = true;
+              }
+              // Additional connection conditions for Regular mode
+              if (trick.spin === -selectedTrick.spin && trick.spin !== 0) isSelected = true;
+              if (trick.flip === -selectedTrick.flip && trick.flip !== 0) isSelected = true;
+              if (currentView === "3D" && trick.body === -selectedTrick.body && trick.body !== 0) isSelected = true;
             } else {
-                if (trick.spin === selectedTrick.spin && trick.spin !== 0) isSelected = true;
-                if (trick.flip === selectedTrick.flip && trick.flip !== 0) isSelected = true;
-                if (currentView === "3D" && trick.body === selectedTrick.body && trick.body !== 0) isSelected = true;
+              // In Goofy mode, only highlight tricks with matching rotations
+              if (trick.id === selectedTrick.id) {
+                isSelected = true;
+              }
+              // Additional connection conditions for Goofy mode
+              if (trick.spin === selectedTrick.spin && trick.spin !== 0) isSelected = true;
+              if (trick.flip === selectedTrick.flip && trick.flip !== 0) isSelected = true;
+              if (currentView === "3D" && trick.body === selectedTrick.body && trick.body !== 0) isSelected = true;
             }
             
             if (isSelected) {
@@ -490,33 +492,43 @@
         const flipLineX = [], flipLineY = [], flipLineZ = [];
         const bodyLineX = [], bodyLineY = [], bodyLineZ = [];
         
+        // Get the selected trick's coordinates, negated if in Regular stance
+        const selectedX = currentStance === "Regular" ? -selectedTrick.spin : selectedTrick.spin;
+        const selectedY = currentStance === "Regular" ? -selectedTrick.flip : selectedTrick.flip;
+        const selectedZ = currentStance === "Regular" ? -selectedTrick.body : selectedTrick.body;
+        
         dataArr.forEach(trick => {
           if (trick.id === selectedTrick.id) return; // skip the selected trick
           if (!trick.name || trick.name.trim() === "") return; // skip unnamed tricks
           
+          // Get the current trick's coordinates, negated if in Regular stance
+          const trickX = currentStance === "Regular" ? -trick.spin : trick.spin;
+          const trickY = currentStance === "Regular" ? -trick.flip : trick.flip;
+          const trickZ = currentStance === "Regular" ? -trick.body : trick.body;
+          
           if (currentStance === "Regular") {
             // In Regular mode, connect with mirror images (negated rotations)
-            if (trick.spin === -selectedTrick.spin && trick.spin !== 0) {
-              spinLineX.push(selectedTrick.spin, trick.spin, null);
-              spinLineY.push(selectedTrick.flip, trick.flip, null);
+            if (trickX === selectedX && trickX !== 0) {
+              spinLineX.push(selectedX, trickX, null);
+              spinLineY.push(selectedY, trickY, null);
               if (currentView === "3D") {
-                spinLineZ.push(selectedTrick.body, trick.body, null);
+                spinLineZ.push(selectedZ, trickZ, null);
               }
             }
-            if (trick.flip === -selectedTrick.flip && trick.flip !== 0) {
-              flipLineX.push(selectedTrick.spin, trick.spin, null);
-              flipLineY.push(selectedTrick.flip, trick.flip, null);
+            if (trickY === selectedY && trickY !== 0) {
+              flipLineX.push(selectedX, trickX, null);
+              flipLineY.push(selectedY, trickY, null);
               if (currentView === "3D") {
-                flipLineZ.push(selectedTrick.body, trick.body, null);
+                flipLineZ.push(selectedZ, trickZ, null);
               }
             }
-            if (currentView === "3D" && trick.body === -selectedTrick.body && trick.body !== 0) {
-              bodyLineX.push(selectedTrick.spin, trick.spin, null);
-              bodyLineY.push(selectedTrick.flip, trick.flip, null);
-              bodyLineZ.push(selectedTrick.body, trick.body, null);
+            if (currentView === "3D" && trickZ === selectedZ && trickZ !== 0) {
+              bodyLineX.push(selectedX, trickX, null);
+              bodyLineY.push(selectedY, trickY, null);
+              bodyLineZ.push(selectedZ, trickZ, null);
             }
           } else {
-            // Goofy mode: use direct matching rotations.
+            // Goofy mode: use direct matching rotations
             if (trick.spin === selectedTrick.spin && trick.spin !== 0) {
               spinLineX.push(selectedTrick.spin, trick.spin, null);
               spinLineY.push(selectedTrick.flip, trick.flip, null);
@@ -709,8 +721,20 @@
         if (data.points && data.points.length > 0) {
           const point = data.points[0];
           const trickId = point.customdata;
-          const clickedTrick = allTricks.find(trick => trick.id === trickId);
+          let clickedTrick = allTricks.find(trick => trick.id === trickId);
+          
           if (clickedTrick) {
+            // In Regular stance, find and select the mirrored trick instead
+            if (currentStance === "Regular") {
+              const mirroredTrick = allTricks.find(t => 
+                t.spin === -clickedTrick.spin && 
+                t.flip === -clickedTrick.flip && 
+                t.body === -clickedTrick.body
+              );
+              if (mirroredTrick) {
+                clickedTrick = mirroredTrick;
+              }
+            }
             selectedTrickId = clickedTrick.id;
             setTimeout(() => drawGraph(), 0);
           }
