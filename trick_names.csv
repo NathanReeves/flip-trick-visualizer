@@ -1,77 +1,51 @@
 Spin Rotation,Flip Rotation,Body Rotation,Trick Name
-# All possible flip trick combinations. Assume goofy stance.
-# No late-flips, half-flips, wraps, underflips, forward flips, pressure flips, and rewinds. Just the basics.
-# Tricks marked with (*) are unconfirmed.
-
-# --- Ollie ---
 0,0,0,Ollie
-
-# --- Backside Tricks - No Body Rotation ---
 -180,0,0,Backside Shuv
 -180,360,0,Varial Kickflip
 -180,-360,0,Inward Heelflip
 -180,720,0,Nightmare Flip
 -180,-720,0,Inward Double Heelflip (Backside Shuv + Double Heelflip)
-
-# --- 360s
 -360,0,0,Backside 360 Shuv
 -360,360,0,Tre Flip
 -360,-360,0,360 Inward Heelflip
 -360,720,0,360 Double Flip
 -360,-720,0,360 Inward Double Heelflip (360 Inward Double Heelflip)
-
-# --- 540s
 -540,0,0,Backside 540 Shuv
 -540,360,0,540 Flip
 -540,-360,0,540 Inward Heelflip
 -540,720,0,540 Double Flip (BS 540 Double Kickflip)
 -540,-720,0,540 Inward Double Heelflip (BS 540 Double Heelflip)
-
-# --- 720s
 -720,0,0,Backside 720 Shuv
 -720,360,0,720 Flip
 -720,-360,0,720 Inward Heelflip
 -720,720,0,720 Double Flip (BS 720 Double Kickflip)
 -720,-720,0,720 Inward Double Heelflip (BS 720 Double Heelflip) 
-
-
-# --- Frontside Tricks - No Body Rotation ---
 180,0,0,Frontside Shuv
 180,360,0,Hardflip
 180,-360,0,Varial Heelflip
 180,720,0,Hard Doubleflip (Hard Hardflip / Frontside Shuv + Double Kickflip)
 180,-720,0,Daydream Flip (Frontside Shuv + Double Heelflip)
-
-# --- 360s
 360,0,0,Frontside 360 Shuv
 360,360,0,360 Hardflip
 360,-360,0,Laser Flip
 360,720,0,360 Hard Doubleflip
 360,-720,0,360 Daydream Flip(FS 360 Double Heelflip)
-
-# --- 540s
 540,0,0,Frontside 540 Shuv
 540,360,0,540 Hardflip
 540,-360,0,540 Laser Flip
 540,720,0,540 Hard Doubleflip
 540,-720,0,540 Daydream Flip (FS 540 Double Heelflip)
-
-# --- 720s
 720,0,0,Frontside 720 Shuv
 720,360,0,720 Hardflip
 720,-360,0,720 Laser Flip
 720,720,0,720 Hard Doubleflip
 720,-720,0,720 Daydream Flip (FS 720 Double Heelflip)
-
-# --- Straight Flip Variations ---
 0,360,0,Kickflip
 0,-360,0,Heelflip
 0,720,0,Double Kickflip
 0,-720,0,Double Heelflip
 0,1080,0,Triple Kickflip
 0,-1080,0,Triple Heelflip
-
-# --- Spin Variations, Spin Rotation == Body Rotation ---
 -180,0,-180,Backside 180
 180,0,180,Frontside 180
 -360,0,-360,Backside 360
@@ -84,136 +58,98 @@ Spin Rotation,Flip Rotation,Body Rotation,Trick Name
 900,0,900,Frontside 900
 -1080,0,-1080,Backside 1080
 1080,0,1080,Frontside 1080
-
-# --- 180° Body Varial Variations ---
-# ---  Backside --- 
 -180,360,-180,Backside Flip
 -180,-360,-180,Backside Heelflip
 -180,720,-180,Backside Double Kickflip
 -180,-720,-180,Backside Double Heelflip
 -180,1080,-180,Backside Triple Kickflip
 -180,-1080,-180,Backside Triple Heelflip
-
 -360,360,-180,Bigflip
 -360,-360,-180,Inward Bigflip
 -360,720,-180,Big Double Flip
 -360,-720,-180,Inward Big Double Flip
-
 -540,360,-180,Biggerflip
 -540,-360,-180,Bigspin Inward Heelflip
 -540,720,-180,Bigger Double Flip
 -540,-720,-180,Bigspin Inward Double Heelflip
-
-# --- Body varials opposite of the spin rotation ---
-
 -180,360,180,Twisted Flip
 -180,-360,180,Inward Heelflip + FS Body Varial (*)
 -180,720,180,Twisted Double Kickflip
 -180,-720,180,Inward Double Heelflip + FS Body Varial (*)
 -180,1080,180,Twisted Triple Kickflip
 -180,-1080,180,Inward Triple Heelflip + FS Body Varial (*)
-
 -360,360,180,360 Twisted Flip
 -360,-360,180,360 Inward Heelflip + FS Body Varial (Like a 360 Twisted Flip for Inward Heelflips)
 -360,720,180,360 Twisted Double Flip
 -360,-720,180,Inward Double Heelflip + FS Body Varial (*)
-
 -540,360,180,540 Twisted Flip
 -540,-360,180,540 Inward Heelflip + FS Body Varial (Like a 540 Twisted Flip for Inward Heelflips)
 -540,720,180,540 Twisted Double Flip
 -540,-720,180,Inward Double Heelflip + FS Body Varial (*)
-
-# ---  Frontside --- 
-
 180,360,180,Frontside Flip
 180,-360,180,Frontside Heelflip
 180,720,180,Frontside Double Kickflip
 180,-720,180,Frontside Double Heelflip
 180,1080,180,Frontside Triple Kickflip
 180,-1080,180,Frontside Triple Heelflip
-
 360,360,180,Frontside Bigflip
 360,-360,180,Big Heelflip
 360,720,180,Frontside Big Doubleflip
 360,-720,180,Big Double Heelflip
-
 540,360,180,Frontside Biggerflip
 540,-360,180,Bigger Heelflip
 540,720,180,Frontside Bigger Double Flip
 540,-720,180,Bigger Double Heelflip
-
-# --- Body varials opposite of the spin rotation ---
 180,360,-180,Hardflip + BS Body Varial (*)
 180,-360,-180,Inward Heelflip + BS Body Varial (*)
 180,720,-180,Hard Doubleflip + BS Body Varial (*)
 180,-720,-180,Inward Double Heelflip + BS Body Varial (*)
 180,1080,-180,Hard Triple Kickflip + BS Body Varial (*)
 180,-1080,-180,Inward Triple Heelflip + BS Body Varial (*)
-
 360,360,-180,360 Hardflip + BS Body Varial (*)
 360,-360,-180,360 Inward Heelflip + BS Body Varial (*)
 360,720,-180,360 Hard Doubleflip + BS Body Varial (*)
 360,-720,-180,360 Inward Double Heelflip + BS Body Varial (*)
-
 540,360,-180,540 Hardflip + BS Body Varial (*)
 540,-360,-180,540 Inward Heelflip + BS Body Varial (*)
 540,720,-180,540 Hard Doubleflip + BS Body Varial (*)
 540,-720,-180,540 Inward Double Heelflip + BS Body Varial (*)
-
-
-
-# --- Big Spins ---
 -360,0,-180,Bigspin
 360,0,180,Frontside Bigspin
 -360,0,180,Anti Bigspin
 360,0,-180,Frontside Anti Bigspin
-
 -540,0,-180,Bigger Spin (540 Shuv with BS 180 Body Rotation)
 540,0,180,Frontside Bigger Spin (540 Shuv with FS 180 Body Rotation)
 -540,0,180,Anti Bigger Spin (540 Shuv with FS 180 Body Rotation)
 540,0,-180,Frontside Anti Bigger Spin (540 Shuv with BS 180 Body Rotation)
-
 -720,0,-180,720 Bigspin (720 Shuv with BS 180 Body Rotation)
 720,0,180,Frontside 720 Bigspin (720 Shuv with FS 180 Body Rotation)
 -720,0,180,Anti 720 Bigspin (720 Shuv with FS 180 Body Rotation)
 720,0,-180,Frontside Anti 720 Bigspin (720 Shuv with BS 180 Body Rotation)
-
-
-# --- Sex Change Flip Variations ---
 0,360,180,Sex Change FS Kickflip (*)
 0,-360,180,Sex Change FS Heelflip (*)
 0,720,180,Sex Change FS Double Kickflip (*)
 0,-720,180,Sex Change FS Double Heelflip (*)
 0,1080,180,Sex Change FS Triple Kickflip (*)
 0,-1080,180,Sex Change FS Triple Heelflip (*)
-
 0,360,-180,Sex Change BS Kickflip (*)
 0,-360,-180,Disco Flip
 0,720,-180,Sex Change BS Double Kickflip (*)
 0,-720,-180,Sex Change BS Double Heelflip (*)
 0,1080,-180,Sex Change BS Triple Kickflip (*)
 0,-1080,-180,Sex Change BS Triple Heelflip (*)
-
-# --- Shuvs with Body Varial ---
 180,0,-180,FS Disco Spin
 -180,0,180,BS Disco Spin
 360,0,-360,360 FS Disco Spin (*)
 -360,0,360,360 BS Disco Spin (*)
-
-
-# --- 360 Body Varial Tricks ---
 0,0,-360,Backside 360 Body Varial (Straight 360 body varial) (*)
 0,0,360,Frontside 360 Body Varial (Straight 360 body varial) (*)
 0,360,-360,Kickflip 360 Body Varial (Double Sex Change?) (*)
 0,-360,-360,Heelflip 360 Body Varial (Double Sex Change?) (*)
-
-# --- Shuvs with 360 Body Varial ---
 -180,0,-360,BS Shuv BS 360 Body Varial (*)
 180,0,-360,FS Shuv BS 360 Body Varial (*)
 -180,0,360,BS Shuv FS 360 Body Varial (*)
 180,0,360,FS Shuv FS 360 Body Varial (*)
-
-# --- Flips with 360 Body Varial ---
 180,360,-360,Varial Kickflip 360 Body Varial (*)
 180,-360,-360,Inward Heelflip 360 Body Varial (*)
 -180,360,-360,Hardflip 360 Body Varial (*)
