@@ -23,7 +23,7 @@ Spin Rotation,Flip Rotation,Body Rotation,Trick Name
 180,0,0,Frontside Shuv
 180,360,0,Hardflip
 180,-360,0,Varial Heelflip
-180,720,0,Hard Doubleflip (Hard Hardflip / Frontside Shuv + Double Kickflip)
+180,720,0,Hard Doubleflip(Hard Hardflip)
 180,-720,0,Daydream Flip (Frontside Shuv + Double Heelflip)
 360,0,0,Frontside 360 Shuv
 360,360,0,360 Hardflip
@@ -79,11 +79,11 @@ Spin Rotation,Flip Rotation,Body Rotation,Trick Name
 -180,1080,180,Twisted Triple Kickflip
 -180,-1080,180,Inward Triple Heelflip + FS Body Varial (*)
 -360,360,180,360 Twisted Flip
--360,-360,180,360 Inward Heelflip + FS Body Varial (Like a 360 Twisted Flip for Inward Heelflips)
+-360,-360,180,360 Inward Heelflip + FS Body Varial (Like a Twisted Flip for 360 Inward Heelflips)
 -360,720,180,360 Twisted Double Flip
 -360,-720,180,Inward Double Heelflip + FS Body Varial (*)
 -540,360,180,540 Twisted Flip
--540,-360,180,540 Inward Heelflip + FS Body Varial (Like a 540 Twisted Flip for Inward Heelflips)
+-540,-360,180,540 Inward Heelflip + FS Body Varial (Like a Twisted Flip for 540 Inward Heelflips)
 -540,720,180,540 Twisted Double Flip
 -540,-720,180,Inward Double Heelflip + FS Body Varial (*)
 180,360,180,Frontside Flip
