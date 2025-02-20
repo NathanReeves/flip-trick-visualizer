@@ -771,7 +771,7 @@
         if (displaySpin < 0) direction = "Backside";
         else if (displaySpin > 0) direction = "Frontside";
         
-        let infoHtml = `<h4>${getDisplayedName(trick)}</h4>
+        let infoHtml = `<h4>${trick.name}</h4>
                         <p>Spin Rotation: ${displaySpin}</p>
                         <p>Flip Rotation: ${displayFlip}</p>`;
         if (currentView === "3D") {
