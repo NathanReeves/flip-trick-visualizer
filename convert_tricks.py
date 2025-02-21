@@ -32,12 +32,6 @@ def create_trick_entry(spin, flip, body, active_stance, name):
     return {
         "compositeKey": f"S{spin},F{flip},B{body},A{active_stance}",
         "trickName": trick_name,
-        "parameters": {
-            "spin": int(spin),
-            "flip": int(flip),
-            "body": int(body),
-            "activeStance": int(active_stance)
-        },
         "otherNames": extract_other_names(name)
     }
 
