@@ -69,9 +69,9 @@ Spin Rotation,Flip Rotation,Body Rotation,Active Stance,Trick Name
 -360,-360,-180,0,Inward Bigflip
 -360,720,-180,0,Big Double Flip
 -360,-720,-180,0,Inward Big Double Flip
--540,360,-180,0,Biggerflip
+-540,360,-180,0,Gazelle Flip
 -540,-360,-180,0,Bigspin Inward Heelflip
--540,720,-180,0,Bigger Double Flip
+-540,720,-180,0,Gazelle Double Flip
 -540,-720,-180,0,Bigspin Inward Double Heelflip
 -180,360,180,0,Twisted Flip
 -180,-360,180,0,Inward Heelflip + FS Body Varial (*)
@@ -127,26 +127,26 @@ Spin Rotation,Flip Rotation,Body Rotation,Active Stance,Trick Name
 720,0,180,0,Frontside 720 Bigspin (720 Shuv with FS 180 Body Rotation)
 -720,0,180,0,Anti 720 Bigspin (720 Shuv with FS 180 Body Rotation)
 720,0,-180,0,Frontside Anti 720 Bigspin (720 Shuv with BS 180 Body Rotation)
-0,360,180,0,Sex Change FS Kickflip (*)
-0,-360,180,0,Sex Change FS Heelflip (*)
-0,720,180,0,Sex Change FS Double Kickflip (*)
-0,-720,180,0,Sex Change FS Double Heelflip (*)
-0,1080,180,0,Sex Change FS Triple Kickflip (*)
-0,-1080,180,0,Sex Change FS Triple Heelflip (*)
-0,360,-180,0,Sex Change BS Kickflip (*)
+0,360,180,0,Kickflip FS Sex Change (*)
+0,-360,180,0,Heelflip FS Sex Change (*)
+0,720,180,0,Double Kickflip FS Sex Change (*)
+0,-720,180,0,Double Heelflip FS Sex Change (*)
+0,1080,180,0,Triple Kickflip FS Sex Change (*)
+0,-1080,180,0,Triple Heelflip FS Sex Change (*)
+0,360,-180,0,Kickflip BS Sex Change (*)
 0,-360,-180,0,Disco Flip
-0,720,-180,0,Sex Change BS Double Kickflip (*)
-0,-720,-180,0,Sex Change BS Double Heelflip (*)
-0,1080,-180,0,Sex Change BS Triple Kickflip (*)
-0,-1080,-180,0,Sex Change BS Triple Heelflip (*)
+0,720,-180,0,Double Kickflip BS Sex Change (*)
+0,-720,-180,0,Double Heelflip BS Sex Change (*)
+0,1080,-180,0,Triple Kickflip BS Sex Change (*)
+0,-1080,-180,0,Triple Heelflip BS Sex Change (*)
 180,0,-180,0,FS Disco Spin
 -180,0,180,0,BS Disco Spin
 360,0,-360,0,360 FS Disco Spin (*)
 -360,0,360,0,360 BS Disco Spin (*)
-0,0,-360,0,Backside 360 Body Varial (Straight 360 body varial) (*)
-0,0,360,0,Frontside 360 Body Varial (Straight 360 body varial) (*)
-0,360,-360,0,Kickflip 360 Body Varial (Double Sex Change?) (*)
-0,-360,-360,0,Heelflip 360 Body Varial (Double Sex Change?) (*)
+0,0,-360,0,Backside 360 Body Varial (*)
+0,0,360,0,Frontside 360 Body Varial (*)
+0,360,-360,0,Kickflip 360 Body Varial (*)
+0,-360,-360,0,Heelflip 360 Body Varial (*)
 -180,0,-360,0,BS Shuv BS 360 Body Varial (*)
 180,0,-360,0,FS Shuv BS 360 Body Varial (*)
 -180,0,360,0,BS Shuv FS 360 Body Varial (*)

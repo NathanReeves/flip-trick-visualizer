@@ -795,7 +795,7 @@
         },
         {
             "compositeKey": "S-540,F360,B-180,A0",
-            "trickName": "Biggerflip",
+            "trickName": "Gazelle Flip",
             "parameters": {
                 "spin": -540,
                 "flip": 360,
@@ -817,7 +817,7 @@
         },
         {
             "compositeKey": "S-540,F720,B-180,A0",
-            "trickName": "Bigger Double Flip",
+            "trickName": "Gazelle Double Flip",
             "parameters": {
                 "spin": -540,
                 "flip": 720,
@@ -1453,7 +1453,7 @@
         },
         {
             "compositeKey": "S0,F360,B180,A0",
-            "trickName": "Sex Change FS Kickflip",
+            "trickName": "Kickflip FS Sex Change",
             "parameters": {
                 "spin": 0,
                 "flip": 360,
@@ -1464,7 +1464,7 @@
         },
         {
             "compositeKey": "S0,F-360,B180,A0",
-            "trickName": "Sex Change FS Heelflip",
+            "trickName": "Heelflip FS Sex Change",
             "parameters": {
                 "spin": 0,
                 "flip": -360,
@@ -1475,7 +1475,7 @@
         },
         {
             "compositeKey": "S0,F720,B180,A0",
-            "trickName": "Sex Change FS Double Kickflip",
+            "trickName": "Double Kickflip FS Sex Change",
             "parameters": {
                 "spin": 0,
                 "flip": 720,
@@ -1486,7 +1486,7 @@
         },
         {
             "compositeKey": "S0,F-720,B180,A0",
-            "trickName": "Sex Change FS Double Heelflip",
+            "trickName": "Double Heelflip FS Sex Change",
             "parameters": {
                 "spin": 0,
                 "flip": -720,
@@ -1497,7 +1497,7 @@
         },
         {
             "compositeKey": "S0,F1080,B180,A0",
-            "trickName": "Sex Change FS Triple Kickflip",
+            "trickName": "Triple Kickflip FS Sex Change",
             "parameters": {
                 "spin": 0,
                 "flip": 1080,
@@ -1508,7 +1508,7 @@
         },
         {
             "compositeKey": "S0,F-1080,B180,A0",
-            "trickName": "Sex Change FS Triple Heelflip",
+            "trickName": "Triple Heelflip FS Sex Change",
             "parameters": {
                 "spin": 0,
                 "flip": -1080,
@@ -1519,7 +1519,7 @@
         },
         {
             "compositeKey": "S0,F360,B-180,A0",
-            "trickName": "Sex Change BS Kickflip",
+            "trickName": "Kickflip BS Sex Change",
             "parameters": {
                 "spin": 0,
                 "flip": 360,
@@ -1541,7 +1541,7 @@
         },
         {
             "compositeKey": "S0,F720,B-180,A0",
-            "trickName": "Sex Change BS Double Kickflip",
+            "trickName": "Double Kickflip BS Sex Change",
             "parameters": {
                 "spin": 0,
                 "flip": 720,
@@ -1552,7 +1552,7 @@
         },
         {
             "compositeKey": "S0,F-720,B-180,A0",
-            "trickName": "Sex Change BS Double Heelflip",
+            "trickName": "Double Heelflip BS Sex Change",
             "parameters": {
                 "spin": 0,
                 "flip": -720,
@@ -1563,7 +1563,7 @@
         },
         {
             "compositeKey": "S0,F1080,B-180,A0",
-            "trickName": "Sex Change BS Triple Kickflip",
+            "trickName": "Triple Kickflip BS Sex Change",
             "parameters": {
                 "spin": 0,
                 "flip": 1080,
@@ -1574,7 +1574,7 @@
         },
         {
             "compositeKey": "S0,F-1080,B-180,A0",
-            "trickName": "Sex Change BS Triple Heelflip",
+            "trickName": "Triple Heelflip BS Sex Change",
             "parameters": {
                 "spin": 0,
                 "flip": -1080,
@@ -1636,9 +1636,7 @@
                 "body": -360,
                 "activeStance": 0
             },
-            "otherNames": [
-                "Straight 360 body varial"
-            ]
+            "otherNames": []
         },
         {
             "compositeKey": "S0,F0,B360,A0",
@@ -1649,9 +1647,7 @@
                 "body": 360,
                 "activeStance": 0
             },
-            "otherNames": [
-                "Straight 360 body varial"
-            ]
+            "otherNames": []
         },
         {
             "compositeKey": "S0,F360,B-360,A0",
@@ -1662,9 +1658,7 @@
                 "body": -360,
                 "activeStance": 0
             },
-            "otherNames": [
-                "Double Sex Change?"
-            ]
+            "otherNames": []
         },
         {
             "compositeKey": "S0,F-360,B-360,A0",
@@ -1675,9 +1669,7 @@
                 "body": -360,
                 "activeStance": 0
             },
-            "otherNames": [
-                "Double Sex Change?"
-            ]
+            "otherNames": []
         },
         {
             "compositeKey": "S-180,F0,B-360,A0",
