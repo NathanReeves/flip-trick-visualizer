@@ -24,20 +24,20 @@ def extract_other_names(trick_name):
     other_names = [name.strip() for name in other_names_str.split(',')]
     return other_names
 
-def create_trick_entry(spin, flip, body, name):
-    """Create a trick entry with canonical name and other names."""
-    # Remove other names in parentheses from canonical name
-    canonical_name = name.split('(')[0].strip()
+def create_trick_entry(spin, flip, body, active_stance, name):
+    """Create a trick entry with trick name and other names."""
+    # Remove other names in parentheses from trick name
+    trick_name = name.split('(')[0].strip()
     
     return {
-        "compositeKey": f"S{spin},F{flip},B{body}",
-        "canonicalName": canonical_name,
+        "compositeKey": f"S{spin},F{flip},B{body},A{active_stance}",
+        "trickName": trick_name,
         "parameters": {
             "spin": int(spin),
             "flip": int(flip),
-            "body": int(body)
+            "body": int(body),
+            "activeStance": int(active_stance)
         },
-        "variant": "none",
         "otherNames": extract_other_names(name)
     }
 
@@ -50,21 +50,22 @@ def csv_to_trick_catalog(input_file, output_file):
         filtered_lines = filter(lambda line: line.strip() and not line.strip().startswith("#"), csvfile)
         reader = csv.reader(filtered_lines)
         for row in reader:
-            # Ensure we have at least four columns: spin, flip, body, canonicalName
-            if len(row) < 4:
+            # Ensure we have at least five columns: spin, flip, body, activeStance, trickName
+            if len(row) < 5:
                 continue
 
             try:
                 spin = int(row[0])
                 flip = int(row[1])
                 body = int(row[2])
+                active_stance = int(row[3])
             except ValueError:
                 # Skip rows with invalid numeric parameters.
                 continue
 
-            name = row[3].strip()
+            name = row[4].strip()
             # Use the create_trick_entry function instead of manual dictionary creation
-            trick = create_trick_entry(spin, flip, body, name)
+            trick = create_trick_entry(spin, flip, body, active_stance, name)
             tricks.append(trick)
 
     # Create the final JSON structure with a version and a list of tricks.

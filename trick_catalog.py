@@ -6,23 +6,20 @@ import json
 #   "tricks": [
 #       {
 #         "compositeKey": "S0,F0,B0",
-#         "canonicalName": "Ollie",
+#         "trickName": "Ollie",
 #         "parameters": { "spin": 0, "flip": 0, "body": 0 },
-#         "variant": "none",
 #         "otherNames": []
 #       },
 #       {
 #         "compositeKey": "S180,F-360,B0",
-#         "canonicalName": "Varial Heelflip",
+#         "trickName": "Varial Heelflip",
 #         "parameters": { "spin": 180, "flip": -360, "body": 0 },
-#         "variant": "none",
 #         "otherNames": []
 #       },
 #       {
 #         "compositeKey": "S-360,F0,B0",
-#         "canonicalName": "FS Shuv",
+#         "trickName": "FS Shuv",
 #         "parameters": { "spin": -360, "flip": 0, "body": 0 },
-#         "variant": "none",
 #         "otherNames": []
 #       }
 #       // ... other tricks
@@ -64,7 +61,7 @@ def process_trick(input_data, catalog):
     )
     base_key = f"S{norm_spin},F{norm_flip},B{norm_body}"
     base_trick = catalog.get(base_key)
-    base_name = base_trick["canonicalName"] if base_trick else "Unknown Trick"
+    base_name = base_trick["trickName"] if base_trick else "Unknown Trick"
 
     # Build the result with active stance as a prefix.
     result = base_name
@@ -90,7 +87,7 @@ def process_trick(input_data, catalog):
         )
         late_key = f"S{norm_late_spin},F{norm_late_flip},B{norm_late_body}"
         late_trick = catalog.get(late_key)
-        late_name = late_trick["canonicalName"] if late_trick else "Unknown Late Trick"
+        late_name = late_trick["trickName"] if late_trick else "Unknown Late Trick"
         output["trickName"] += f" Late {late_name}"
         output["lateTrickName"] = late_name  # Add separate lateTrickName field
         

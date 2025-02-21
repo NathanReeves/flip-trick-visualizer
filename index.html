@@ -263,7 +263,7 @@
     let current2DBodyRotation = 0; // 2D filter for Body Rotation (default 0°)
     
     // Function to parse CSV data and create trick objects.
-    // Now adds a unique id to each trick.
+    // Now adds a unique id to each trick and includes active stance.
     function parseCSVData(csvText) {
         const lines = csvText.split('\n');
         const tricks = [];
@@ -273,7 +273,11 @@
             // Skip empty lines, comments, and header
             if (!line.trim() || line.startsWith('#') || line.startsWith('Spin')) continue;
             
-            const [spin, flip, body, ...nameParts] = line.split(',');
+            const [spin, flip, body, activeStance, ...nameParts] = line.split(',');
+            
+            // Skip tricks where active stance is not 0
+            if (parseInt(activeStance) !== 0) continue;
+            
             let name = nameParts.join(',').trim();
             
             // Check if the trick name has an asterisk
@@ -290,6 +294,7 @@
                     spin: parseInt(spin),
                     flip: parseInt(flip),
                     body: parseInt(body),
+                    activeStance: parseInt(activeStance),
                     hasAsterisk: hasAsterisk
                 });
             }

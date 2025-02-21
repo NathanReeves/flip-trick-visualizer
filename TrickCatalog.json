@@ -2,1758 +2,1769 @@
     "version": "1.0",
     "tricks": [
         {
-            "compositeKey": "S0,F0,B0",
-            "canonicalName": "Ollie",
+            "compositeKey": "S0,F0,B0,A0",
+            "trickName": "Ollie",
             "parameters": {
                 "spin": 0,
                 "flip": 0,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-180,F0,B0",
-            "canonicalName": "Backside Shuv",
+            "compositeKey": "S0,F0,B0,A2",
+            "trickName": "Nollie",
+            "parameters": {
+                "spin": 0,
+                "flip": 0,
+                "body": 0,
+                "activeStance": 2
+            },
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S-180,F0,B0,A0",
+            "trickName": "Backside Shuv",
             "parameters": {
                 "spin": -180,
                 "flip": 0,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-180,F360,B0",
-            "canonicalName": "Varial Kickflip",
+            "compositeKey": "S-180,F360,B0,A0",
+            "trickName": "Varial Kickflip",
             "parameters": {
                 "spin": -180,
                 "flip": 360,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-180,F-360,B0",
-            "canonicalName": "Inward Heelflip",
+            "compositeKey": "S-180,F-360,B0,A0",
+            "trickName": "Inward Heelflip",
             "parameters": {
                 "spin": -180,
                 "flip": -360,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-180,F720,B0",
-            "canonicalName": "Nightmare Flip",
+            "compositeKey": "S-180,F720,B0,A0",
+            "trickName": "Nightmare Flip",
             "parameters": {
                 "spin": -180,
                 "flip": 720,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-180,F-720,B0",
-            "canonicalName": "Inward Double Heelflip",
+            "compositeKey": "S-180,F-720,B0,A0",
+            "trickName": "Inward Double Heelflip",
             "parameters": {
                 "spin": -180,
                 "flip": -720,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "Backside Shuv + Double Heelflip"
             ]
         },
         {
-            "compositeKey": "S-360,F0,B0",
-            "canonicalName": "Backside 360 Shuv",
+            "compositeKey": "S-360,F0,B0,A0",
+            "trickName": "Backside 360 Shuv",
             "parameters": {
                 "spin": -360,
                 "flip": 0,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-360,F360,B0",
-            "canonicalName": "Tre Flip",
+            "compositeKey": "S-360,F360,B0,A0",
+            "trickName": "Tre Flip",
             "parameters": {
                 "spin": -360,
                 "flip": 360,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-360,F-360,B0",
-            "canonicalName": "360 Inward Heelflip",
+            "compositeKey": "S-360,F-360,B0,A0",
+            "trickName": "360 Inward Heelflip",
             "parameters": {
                 "spin": -360,
                 "flip": -360,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-360,F720,B0",
-            "canonicalName": "360 Double Flip",
+            "compositeKey": "S-360,F720,B0,A0",
+            "trickName": "360 Double Flip",
             "parameters": {
                 "spin": -360,
                 "flip": 720,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-360,F-720,B0",
-            "canonicalName": "360 Inward Double Heelflip",
+            "compositeKey": "S-360,F-720,B0,A0",
+            "trickName": "360 Inward Double Heelflip",
             "parameters": {
                 "spin": -360,
                 "flip": -720,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "360 Inward Double Heelflip"
             ]
         },
         {
-            "compositeKey": "S-540,F0,B0",
-            "canonicalName": "Backside 540 Shuv",
+            "compositeKey": "S-540,F0,B0,A0",
+            "trickName": "Backside 540 Shuv",
             "parameters": {
                 "spin": -540,
                 "flip": 0,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-540,F360,B0",
-            "canonicalName": "540 Flip",
+            "compositeKey": "S-540,F360,B0,A0",
+            "trickName": "540 Flip",
             "parameters": {
                 "spin": -540,
                 "flip": 360,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-540,F-360,B0",
-            "canonicalName": "540 Inward Heelflip",
+            "compositeKey": "S-540,F-360,B0,A0",
+            "trickName": "540 Inward Heelflip",
             "parameters": {
                 "spin": -540,
                 "flip": -360,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-540,F720,B0",
-            "canonicalName": "540 Double Flip",
+            "compositeKey": "S-540,F720,B0,A0",
+            "trickName": "540 Double Flip",
             "parameters": {
                 "spin": -540,
                 "flip": 720,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "BS 540 Double Kickflip"
             ]
         },
         {
-            "compositeKey": "S-540,F-720,B0",
-            "canonicalName": "540 Inward Double Heelflip",
+            "compositeKey": "S-540,F-720,B0,A0",
+            "trickName": "540 Inward Double Heelflip",
             "parameters": {
                 "spin": -540,
                 "flip": -720,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "BS 540 Double Heelflip"
             ]
         },
         {
-            "compositeKey": "S-720,F0,B0",
-            "canonicalName": "Backside 720 Shuv",
+            "compositeKey": "S-720,F0,B0,A0",
+            "trickName": "Backside 720 Shuv",
             "parameters": {
                 "spin": -720,
                 "flip": 0,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-720,F360,B0",
-            "canonicalName": "720 Flip",
+            "compositeKey": "S-720,F360,B0,A0",
+            "trickName": "720 Flip",
             "parameters": {
                 "spin": -720,
                 "flip": 360,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-720,F-360,B0",
-            "canonicalName": "720 Inward Heelflip",
+            "compositeKey": "S-720,F-360,B0,A0",
+            "trickName": "720 Inward Heelflip",
             "parameters": {
                 "spin": -720,
                 "flip": -360,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-720,F720,B0",
-            "canonicalName": "720 Double Flip",
+            "compositeKey": "S-720,F720,B0,A0",
+            "trickName": "720 Double Flip",
             "parameters": {
                 "spin": -720,
                 "flip": 720,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "BS 720 Double Kickflip"
             ]
         },
         {
-            "compositeKey": "S-720,F-720,B0",
-            "canonicalName": "720 Inward Double Heelflip",
+            "compositeKey": "S-720,F-720,B0,A0",
+            "trickName": "720 Inward Double Heelflip",
             "parameters": {
                 "spin": -720,
                 "flip": -720,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "BS 720 Double Heelflip"
             ]
         },
         {
-            "compositeKey": "S180,F0,B0",
-            "canonicalName": "Frontside Shuv",
+            "compositeKey": "S180,F0,B0,A0",
+            "trickName": "Frontside Shuv",
             "parameters": {
                 "spin": 180,
                 "flip": 0,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S180,F360,B0",
-            "canonicalName": "Hardflip",
+            "compositeKey": "S180,F360,B0,A0",
+            "trickName": "Hardflip",
             "parameters": {
                 "spin": 180,
                 "flip": 360,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S180,F-360,B0",
-            "canonicalName": "Varial Heelflip",
+            "compositeKey": "S180,F-360,B0,A0",
+            "trickName": "Varial Heelflip",
             "parameters": {
                 "spin": 180,
                 "flip": -360,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S180,F720,B0",
-            "canonicalName": "Hard Doubleflip",
+            "compositeKey": "S180,F720,B0,A0",
+            "trickName": "Hard Doubleflip",
             "parameters": {
                 "spin": 180,
                 "flip": 720,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "Hard Hardflip"
             ]
         },
         {
-            "compositeKey": "S180,F-720,B0",
-            "canonicalName": "Daydream Flip",
+            "compositeKey": "S180,F-720,B0,A0",
+            "trickName": "Daydream Flip",
             "parameters": {
                 "spin": 180,
                 "flip": -720,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "Frontside Shuv + Double Heelflip"
             ]
         },
         {
-            "compositeKey": "S360,F0,B0",
-            "canonicalName": "Frontside 360 Shuv",
+            "compositeKey": "S360,F0,B0,A0",
+            "trickName": "Frontside 360 Shuv",
             "parameters": {
                 "spin": 360,
                 "flip": 0,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S360,F360,B0",
-            "canonicalName": "360 Hardflip",
+            "compositeKey": "S360,F360,B0,A0",
+            "trickName": "360 Hardflip",
             "parameters": {
                 "spin": 360,
                 "flip": 360,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S360,F-360,B0",
-            "canonicalName": "Laser Flip",
+            "compositeKey": "S360,F-360,B0,A0",
+            "trickName": "Laser Flip",
             "parameters": {
                 "spin": 360,
                 "flip": -360,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S360,F720,B0",
-            "canonicalName": "360 Hard Doubleflip",
+            "compositeKey": "S360,F720,B0,A0",
+            "trickName": "360 Hard Doubleflip",
             "parameters": {
                 "spin": 360,
                 "flip": 720,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S360,F-720,B0",
-            "canonicalName": "360 Daydream Flip",
+            "compositeKey": "S360,F-720,B0,A0",
+            "trickName": "360 Daydream Flip",
             "parameters": {
                 "spin": 360,
                 "flip": -720,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "FS 360 Double Heelflip"
             ]
         },
         {
-            "compositeKey": "S540,F0,B0",
-            "canonicalName": "Frontside 540 Shuv",
+            "compositeKey": "S540,F0,B0,A0",
+            "trickName": "Frontside 540 Shuv",
             "parameters": {
                 "spin": 540,
                 "flip": 0,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S540,F360,B0",
-            "canonicalName": "540 Hardflip",
+            "compositeKey": "S540,F360,B0,A0",
+            "trickName": "540 Hardflip",
             "parameters": {
                 "spin": 540,
                 "flip": 360,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S540,F-360,B0",
-            "canonicalName": "540 Laser Flip",
+            "compositeKey": "S540,F-360,B0,A0",
+            "trickName": "540 Laser Flip",
             "parameters": {
                 "spin": 540,
                 "flip": -360,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S540,F720,B0",
-            "canonicalName": "540 Hard Doubleflip",
+            "compositeKey": "S540,F720,B0,A0",
+            "trickName": "540 Hard Doubleflip",
             "parameters": {
                 "spin": 540,
                 "flip": 720,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S540,F-720,B0",
-            "canonicalName": "540 Daydream Flip",
+            "compositeKey": "S540,F-720,B0,A0",
+            "trickName": "540 Daydream Flip",
             "parameters": {
                 "spin": 540,
                 "flip": -720,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "FS 540 Double Heelflip"
             ]
         },
         {
-            "compositeKey": "S720,F0,B0",
-            "canonicalName": "Frontside 720 Shuv",
+            "compositeKey": "S720,F0,B0,A0",
+            "trickName": "Frontside 720 Shuv",
             "parameters": {
                 "spin": 720,
                 "flip": 0,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S720,F360,B0",
-            "canonicalName": "720 Hardflip",
+            "compositeKey": "S720,F360,B0,A0",
+            "trickName": "720 Hardflip",
             "parameters": {
                 "spin": 720,
                 "flip": 360,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S720,F-360,B0",
-            "canonicalName": "720 Laser Flip",
+            "compositeKey": "S720,F-360,B0,A0",
+            "trickName": "720 Laser Flip",
             "parameters": {
                 "spin": 720,
                 "flip": -360,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S720,F720,B0",
-            "canonicalName": "720 Hard Doubleflip",
+            "compositeKey": "S720,F720,B0,A0",
+            "trickName": "720 Hard Doubleflip",
             "parameters": {
                 "spin": 720,
                 "flip": 720,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S720,F-720,B0",
-            "canonicalName": "720 Daydream Flip",
+            "compositeKey": "S720,F-720,B0,A0",
+            "trickName": "720 Daydream Flip",
             "parameters": {
                 "spin": 720,
                 "flip": -720,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "FS 720 Double Heelflip"
             ]
         },
         {
-            "compositeKey": "S0,F360,B0",
-            "canonicalName": "Kickflip",
+            "compositeKey": "S0,F360,B0,A0",
+            "trickName": "Kickflip",
             "parameters": {
                 "spin": 0,
                 "flip": 360,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S0,F-360,B0",
-            "canonicalName": "Heelflip",
+            "compositeKey": "S0,F-360,B0,A0",
+            "trickName": "Heelflip",
             "parameters": {
                 "spin": 0,
                 "flip": -360,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S0,F720,B0",
-            "canonicalName": "Double Kickflip",
+            "compositeKey": "S0,F720,B0,A0",
+            "trickName": "Double Kickflip",
             "parameters": {
                 "spin": 0,
                 "flip": 720,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S0,F-720,B0",
-            "canonicalName": "Double Heelflip",
+            "compositeKey": "S0,F-720,B0,A0",
+            "trickName": "Double Heelflip",
             "parameters": {
                 "spin": 0,
                 "flip": -720,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S0,F1080,B0",
-            "canonicalName": "Triple Kickflip",
+            "compositeKey": "S0,F1080,B0,A0",
+            "trickName": "Triple Kickflip",
             "parameters": {
                 "spin": 0,
                 "flip": 1080,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S0,F-1080,B0",
-            "canonicalName": "Triple Heelflip",
+            "compositeKey": "S0,F-1080,B0,A0",
+            "trickName": "Triple Heelflip",
             "parameters": {
                 "spin": 0,
                 "flip": -1080,
-                "body": 0
+                "body": 0,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-180,F0,B-180",
-            "canonicalName": "Backside 180",
+            "compositeKey": "S-180,F0,B-180,A0",
+            "trickName": "Backside 180",
             "parameters": {
                 "spin": -180,
                 "flip": 0,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S180,F0,B180",
-            "canonicalName": "Frontside 180",
+            "compositeKey": "S180,F0,B180,A0",
+            "trickName": "Frontside 180",
             "parameters": {
                 "spin": 180,
                 "flip": 0,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-360,F0,B-360",
-            "canonicalName": "Backside 360",
+            "compositeKey": "S-360,F0,B-360,A0",
+            "trickName": "Backside 360",
             "parameters": {
                 "spin": -360,
                 "flip": 0,
-                "body": -360
+                "body": -360,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S360,F0,B360",
-            "canonicalName": "Frontside 360",
+            "compositeKey": "S360,F0,B360,A0",
+            "trickName": "Frontside 360",
             "parameters": {
                 "spin": 360,
                 "flip": 0,
-                "body": 360
+                "body": 360,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-540,F0,B-540",
-            "canonicalName": "Backside 540",
+            "compositeKey": "S-540,F0,B-540,A0",
+            "trickName": "Backside 540",
             "parameters": {
                 "spin": -540,
                 "flip": 0,
-                "body": -540
+                "body": -540,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S540,F0,B540",
-            "canonicalName": "Frontside 540",
+            "compositeKey": "S540,F0,B540,A0",
+            "trickName": "Frontside 540",
             "parameters": {
                 "spin": 540,
                 "flip": 0,
-                "body": 540
+                "body": 540,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-720,F0,B-720",
-            "canonicalName": "Backside 720",
+            "compositeKey": "S-720,F0,B-720,A0",
+            "trickName": "Backside 720",
             "parameters": {
                 "spin": -720,
                 "flip": 0,
-                "body": -720
+                "body": -720,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S720,F0,B720",
-            "canonicalName": "Frontside 720",
+            "compositeKey": "S720,F0,B720,A0",
+            "trickName": "Frontside 720",
             "parameters": {
                 "spin": 720,
                 "flip": 0,
-                "body": 720
+                "body": 720,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-900,F0,B-900",
-            "canonicalName": "Backside 900",
+            "compositeKey": "S-900,F0,B-900,A0",
+            "trickName": "Backside 900",
             "parameters": {
                 "spin": -900,
                 "flip": 0,
-                "body": -900
+                "body": -900,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S900,F0,B900",
-            "canonicalName": "Frontside 900",
+            "compositeKey": "S900,F0,B900,A0",
+            "trickName": "Frontside 900",
             "parameters": {
                 "spin": 900,
                 "flip": 0,
-                "body": 900
+                "body": 900,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-1080,F0,B-1080",
-            "canonicalName": "Backside 1080",
+            "compositeKey": "S-1080,F0,B-1080,A0",
+            "trickName": "Backside 1080",
             "parameters": {
                 "spin": -1080,
                 "flip": 0,
-                "body": -1080
+                "body": -1080,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S1080,F0,B1080",
-            "canonicalName": "Frontside 1080",
+            "compositeKey": "S1080,F0,B1080,A0",
+            "trickName": "Frontside 1080",
             "parameters": {
                 "spin": 1080,
                 "flip": 0,
-                "body": 1080
+                "body": 1080,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-180,F360,B-180",
-            "canonicalName": "Backside Flip",
+            "compositeKey": "S-180,F360,B-180,A0",
+            "trickName": "Backside Flip",
             "parameters": {
                 "spin": -180,
                 "flip": 360,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-180,F-360,B-180",
-            "canonicalName": "Backside Heelflip",
+            "compositeKey": "S-180,F-360,B-180,A0",
+            "trickName": "Backside Heelflip",
             "parameters": {
                 "spin": -180,
                 "flip": -360,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-180,F720,B-180",
-            "canonicalName": "Backside Double Kickflip",
+            "compositeKey": "S-180,F720,B-180,A0",
+            "trickName": "Backside Double Kickflip",
             "parameters": {
                 "spin": -180,
                 "flip": 720,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-180,F-720,B-180",
-            "canonicalName": "Backside Double Heelflip",
+            "compositeKey": "S-180,F-720,B-180,A0",
+            "trickName": "Backside Double Heelflip",
             "parameters": {
                 "spin": -180,
                 "flip": -720,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-180,F1080,B-180",
-            "canonicalName": "Backside Triple Kickflip",
+            "compositeKey": "S-180,F1080,B-180,A0",
+            "trickName": "Backside Triple Kickflip",
             "parameters": {
                 "spin": -180,
                 "flip": 1080,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-180,F-1080,B-180",
-            "canonicalName": "Backside Triple Heelflip",
+            "compositeKey": "S-180,F-1080,B-180,A0",
+            "trickName": "Backside Triple Heelflip",
             "parameters": {
                 "spin": -180,
                 "flip": -1080,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-360,F360,B-180",
-            "canonicalName": "Bigflip",
+            "compositeKey": "S-360,F360,B-180,A0",
+            "trickName": "Bigflip",
             "parameters": {
                 "spin": -360,
                 "flip": 360,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-360,F-360,B-180",
-            "canonicalName": "Inward Bigflip",
+            "compositeKey": "S-360,F-360,B-180,A0",
+            "trickName": "Inward Bigflip",
             "parameters": {
                 "spin": -360,
                 "flip": -360,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-360,F720,B-180",
-            "canonicalName": "Big Double Flip",
+            "compositeKey": "S-360,F720,B-180,A0",
+            "trickName": "Big Double Flip",
             "parameters": {
                 "spin": -360,
                 "flip": 720,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-360,F-720,B-180",
-            "canonicalName": "Inward Big Double Flip",
+            "compositeKey": "S-360,F-720,B-180,A0",
+            "trickName": "Inward Big Double Flip",
             "parameters": {
                 "spin": -360,
                 "flip": -720,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-540,F360,B-180",
-            "canonicalName": "Biggerflip",
+            "compositeKey": "S-540,F360,B-180,A0",
+            "trickName": "Biggerflip",
             "parameters": {
                 "spin": -540,
                 "flip": 360,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-540,F-360,B-180",
-            "canonicalName": "Bigspin Inward Heelflip",
+            "compositeKey": "S-540,F-360,B-180,A0",
+            "trickName": "Bigspin Inward Heelflip",
             "parameters": {
                 "spin": -540,
                 "flip": -360,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-540,F720,B-180",
-            "canonicalName": "Bigger Double Flip",
+            "compositeKey": "S-540,F720,B-180,A0",
+            "trickName": "Bigger Double Flip",
             "parameters": {
                 "spin": -540,
                 "flip": 720,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-540,F-720,B-180",
-            "canonicalName": "Bigspin Inward Double Heelflip",
+            "compositeKey": "S-540,F-720,B-180,A0",
+            "trickName": "Bigspin Inward Double Heelflip",
             "parameters": {
                 "spin": -540,
                 "flip": -720,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-180,F360,B180",
-            "canonicalName": "Twisted Flip",
+            "compositeKey": "S-180,F360,B180,A0",
+            "trickName": "Twisted Flip",
             "parameters": {
                 "spin": -180,
                 "flip": 360,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-180,F-360,B180",
-            "canonicalName": "Inward Heelflip + FS Body Varial",
+            "compositeKey": "S-180,F-360,B180,A0",
+            "trickName": "Inward Heelflip + FS Body Varial",
             "parameters": {
                 "spin": -180,
                 "flip": -360,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-180,F720,B180",
-            "canonicalName": "Twisted Double Kickflip",
+            "compositeKey": "S-180,F720,B180,A0",
+            "trickName": "Twisted Double Kickflip",
             "parameters": {
                 "spin": -180,
                 "flip": 720,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-180,F-720,B180",
-            "canonicalName": "Inward Double Heelflip + FS Body Varial",
+            "compositeKey": "S-180,F-720,B180,A0",
+            "trickName": "Inward Double Heelflip + FS Body Varial",
             "parameters": {
                 "spin": -180,
                 "flip": -720,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-180,F1080,B180",
-            "canonicalName": "Twisted Triple Kickflip",
+            "compositeKey": "S-180,F1080,B180,A0",
+            "trickName": "Twisted Triple Kickflip",
             "parameters": {
                 "spin": -180,
                 "flip": 1080,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-180,F-1080,B180",
-            "canonicalName": "Inward Triple Heelflip + FS Body Varial",
+            "compositeKey": "S-180,F-1080,B180,A0",
+            "trickName": "Inward Triple Heelflip + FS Body Varial",
             "parameters": {
                 "spin": -180,
                 "flip": -1080,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-360,F360,B180",
-            "canonicalName": "360 Twisted Flip",
+            "compositeKey": "S-360,F360,B180,A0",
+            "trickName": "360 Twisted Flip",
             "parameters": {
                 "spin": -360,
                 "flip": 360,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-360,F-360,B180",
-            "canonicalName": "360 Inward Heelflip + FS Body Varial",
+            "compositeKey": "S-360,F-360,B180,A0",
+            "trickName": "360 Inward Heelflip + FS Body Varial",
             "parameters": {
                 "spin": -360,
                 "flip": -360,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "Like a Twisted Flip for 360 Inward Heelflips"
             ]
         },
         {
-            "compositeKey": "S-360,F720,B180",
-            "canonicalName": "360 Twisted Double Flip",
+            "compositeKey": "S-360,F720,B180,A0",
+            "trickName": "360 Twisted Double Flip",
             "parameters": {
                 "spin": -360,
                 "flip": 720,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-360,F-720,B180",
-            "canonicalName": "Inward Double Heelflip + FS Body Varial",
+            "compositeKey": "S-360,F-720,B180,A0",
+            "trickName": "Inward Double Heelflip + FS Body Varial",
             "parameters": {
                 "spin": -360,
                 "flip": -720,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-540,F360,B180",
-            "canonicalName": "540 Twisted Flip",
+            "compositeKey": "S-540,F360,B180,A0",
+            "trickName": "540 Twisted Flip",
             "parameters": {
                 "spin": -540,
                 "flip": 360,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-540,F-360,B180",
-            "canonicalName": "540 Inward Heelflip + FS Body Varial",
+            "compositeKey": "S-540,F-360,B180,A0",
+            "trickName": "540 Inward Heelflip + FS Body Varial",
             "parameters": {
                 "spin": -540,
                 "flip": -360,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "Like a Twisted Flip for 540 Inward Heelflips"
             ]
         },
         {
-            "compositeKey": "S-540,F720,B180",
-            "canonicalName": "540 Twisted Double Flip",
+            "compositeKey": "S-540,F720,B180,A0",
+            "trickName": "540 Twisted Double Flip",
             "parameters": {
                 "spin": -540,
                 "flip": 720,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-540,F-720,B180",
-            "canonicalName": "Inward Double Heelflip + FS Body Varial",
+            "compositeKey": "S-540,F-720,B180,A0",
+            "trickName": "Inward Double Heelflip + FS Body Varial",
             "parameters": {
                 "spin": -540,
                 "flip": -720,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S180,F360,B180",
-            "canonicalName": "Frontside Flip",
+            "compositeKey": "S180,F360,B180,A0",
+            "trickName": "Frontside Flip",
             "parameters": {
                 "spin": 180,
                 "flip": 360,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S180,F-360,B180",
-            "canonicalName": "Frontside Heelflip",
+            "compositeKey": "S180,F-360,B180,A0",
+            "trickName": "Frontside Heelflip",
             "parameters": {
                 "spin": 180,
                 "flip": -360,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S180,F720,B180",
-            "canonicalName": "Frontside Double Kickflip",
+            "compositeKey": "S180,F720,B180,A0",
+            "trickName": "Frontside Double Kickflip",
             "parameters": {
                 "spin": 180,
                 "flip": 720,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S180,F-720,B180",
-            "canonicalName": "Frontside Double Heelflip",
+            "compositeKey": "S180,F-720,B180,A0",
+            "trickName": "Frontside Double Heelflip",
             "parameters": {
                 "spin": 180,
                 "flip": -720,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S180,F1080,B180",
-            "canonicalName": "Frontside Triple Kickflip",
+            "compositeKey": "S180,F1080,B180,A0",
+            "trickName": "Frontside Triple Kickflip",
             "parameters": {
                 "spin": 180,
                 "flip": 1080,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S180,F-1080,B180",
-            "canonicalName": "Frontside Triple Heelflip",
+            "compositeKey": "S180,F-1080,B180,A0",
+            "trickName": "Frontside Triple Heelflip",
             "parameters": {
                 "spin": 180,
                 "flip": -1080,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S360,F360,B180",
-            "canonicalName": "Frontside Bigflip",
+            "compositeKey": "S360,F360,B180,A0",
+            "trickName": "Frontside Bigflip",
             "parameters": {
                 "spin": 360,
                 "flip": 360,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S360,F-360,B180",
-            "canonicalName": "Big Heelflip",
+            "compositeKey": "S360,F-360,B180,A0",
+            "trickName": "Big Heelflip",
             "parameters": {
                 "spin": 360,
                 "flip": -360,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S360,F720,B180",
-            "canonicalName": "Frontside Big Doubleflip",
+            "compositeKey": "S360,F720,B180,A0",
+            "trickName": "Frontside Big Doubleflip",
             "parameters": {
                 "spin": 360,
                 "flip": 720,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S360,F-720,B180",
-            "canonicalName": "Big Double Heelflip",
+            "compositeKey": "S360,F-720,B180,A0",
+            "trickName": "Big Double Heelflip",
             "parameters": {
                 "spin": 360,
                 "flip": -720,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S540,F360,B180",
-            "canonicalName": "Frontside Biggerflip",
+            "compositeKey": "S540,F360,B180,A0",
+            "trickName": "Frontside Biggerflip",
             "parameters": {
                 "spin": 540,
                 "flip": 360,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S540,F-360,B180",
-            "canonicalName": "Bigger Heelflip",
+            "compositeKey": "S540,F-360,B180,A0",
+            "trickName": "Bigger Heelflip",
             "parameters": {
                 "spin": 540,
                 "flip": -360,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S540,F720,B180",
-            "canonicalName": "Frontside Bigger Double Flip",
+            "compositeKey": "S540,F720,B180,A0",
+            "trickName": "Frontside Bigger Double Flip",
             "parameters": {
                 "spin": 540,
                 "flip": 720,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S540,F-720,B180",
-            "canonicalName": "Bigger Double Heelflip",
+            "compositeKey": "S540,F-720,B180,A0",
+            "trickName": "Bigger Double Heelflip",
             "parameters": {
                 "spin": 540,
                 "flip": -720,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S180,F360,B-180",
-            "canonicalName": "Hardflip + BS Body Varial",
+            "compositeKey": "S180,F360,B-180,A0",
+            "trickName": "Hardflip + BS Body Varial",
             "parameters": {
                 "spin": 180,
                 "flip": 360,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S180,F-360,B-180",
-            "canonicalName": "Inward Heelflip + BS Body Varial",
+            "compositeKey": "S180,F-360,B-180,A0",
+            "trickName": "Inward Heelflip + BS Body Varial",
             "parameters": {
                 "spin": 180,
                 "flip": -360,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S180,F720,B-180",
-            "canonicalName": "Hard Doubleflip + BS Body Varial",
+            "compositeKey": "S180,F720,B-180,A0",
+            "trickName": "Hard Doubleflip + BS Body Varial",
             "parameters": {
                 "spin": 180,
                 "flip": 720,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S180,F-720,B-180",
-            "canonicalName": "Inward Double Heelflip + BS Body Varial",
+            "compositeKey": "S180,F-720,B-180,A0",
+            "trickName": "Inward Double Heelflip + BS Body Varial",
             "parameters": {
                 "spin": 180,
                 "flip": -720,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S180,F1080,B-180",
-            "canonicalName": "Hard Triple Kickflip + BS Body Varial",
+            "compositeKey": "S180,F1080,B-180,A0",
+            "trickName": "Hard Triple Kickflip + BS Body Varial",
             "parameters": {
                 "spin": 180,
                 "flip": 1080,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S180,F-1080,B-180",
-            "canonicalName": "Inward Triple Heelflip + BS Body Varial",
+            "compositeKey": "S180,F-1080,B-180,A0",
+            "trickName": "Inward Triple Heelflip + BS Body Varial",
             "parameters": {
                 "spin": 180,
                 "flip": -1080,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S360,F360,B-180",
-            "canonicalName": "360 Hardflip + BS Body Varial",
+            "compositeKey": "S360,F360,B-180,A0",
+            "trickName": "360 Hardflip + BS Body Varial",
             "parameters": {
                 "spin": 360,
                 "flip": 360,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S360,F-360,B-180",
-            "canonicalName": "360 Inward Heelflip + BS Body Varial",
+            "compositeKey": "S360,F-360,B-180,A0",
+            "trickName": "360 Inward Heelflip + BS Body Varial",
             "parameters": {
                 "spin": 360,
                 "flip": -360,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S360,F720,B-180",
-            "canonicalName": "360 Hard Doubleflip + BS Body Varial",
+            "compositeKey": "S360,F720,B-180,A0",
+            "trickName": "360 Hard Doubleflip + BS Body Varial",
             "parameters": {
                 "spin": 360,
                 "flip": 720,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S360,F-720,B-180",
-            "canonicalName": "360 Inward Double Heelflip + BS Body Varial",
+            "compositeKey": "S360,F-720,B-180,A0",
+            "trickName": "360 Inward Double Heelflip + BS Body Varial",
             "parameters": {
                 "spin": 360,
                 "flip": -720,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S540,F360,B-180",
-            "canonicalName": "540 Hardflip + BS Body Varial",
+            "compositeKey": "S540,F360,B-180,A0",
+            "trickName": "540 Hardflip + BS Body Varial",
             "parameters": {
                 "spin": 540,
                 "flip": 360,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S540,F-360,B-180",
-            "canonicalName": "540 Inward Heelflip + BS Body Varial",
+            "compositeKey": "S540,F-360,B-180,A0",
+            "trickName": "540 Inward Heelflip + BS Body Varial",
             "parameters": {
                 "spin": 540,
                 "flip": -360,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S540,F720,B-180",
-            "canonicalName": "540 Hard Doubleflip + BS Body Varial",
+            "compositeKey": "S540,F720,B-180,A0",
+            "trickName": "540 Hard Doubleflip + BS Body Varial",
             "parameters": {
                 "spin": 540,
                 "flip": 720,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S540,F-720,B-180",
-            "canonicalName": "540 Inward Double Heelflip + BS Body Varial",
+            "compositeKey": "S540,F-720,B-180,A0",
+            "trickName": "540 Inward Double Heelflip + BS Body Varial",
             "parameters": {
                 "spin": 540,
                 "flip": -720,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-360,F0,B-180",
-            "canonicalName": "Bigspin",
+            "compositeKey": "S-360,F0,B-180,A0",
+            "trickName": "Bigspin",
             "parameters": {
                 "spin": -360,
                 "flip": 0,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S360,F0,B180",
-            "canonicalName": "Frontside Bigspin",
+            "compositeKey": "S360,F0,B180,A0",
+            "trickName": "Frontside Bigspin",
             "parameters": {
                 "spin": 360,
                 "flip": 0,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-360,F0,B180",
-            "canonicalName": "Anti Bigspin",
+            "compositeKey": "S-360,F0,B180,A0",
+            "trickName": "Anti Bigspin",
             "parameters": {
                 "spin": -360,
                 "flip": 0,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S360,F0,B-180",
-            "canonicalName": "Frontside Anti Bigspin",
+            "compositeKey": "S360,F0,B-180,A0",
+            "trickName": "Frontside Anti Bigspin",
             "parameters": {
                 "spin": 360,
                 "flip": 0,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-540,F0,B-180",
-            "canonicalName": "Bigger Spin",
+            "compositeKey": "S-540,F0,B-180,A0",
+            "trickName": "Bigger Spin",
             "parameters": {
                 "spin": -540,
                 "flip": 0,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "540 Shuv with BS 180 Body Rotation"
             ]
         },
         {
-            "compositeKey": "S540,F0,B180",
-            "canonicalName": "Frontside Bigger Spin",
+            "compositeKey": "S540,F0,B180,A0",
+            "trickName": "Frontside Bigger Spin",
             "parameters": {
                 "spin": 540,
                 "flip": 0,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "540 Shuv with FS 180 Body Rotation"
             ]
         },
         {
-            "compositeKey": "S-540,F0,B180",
-            "canonicalName": "Anti Bigger Spin",
+            "compositeKey": "S-540,F0,B180,A0",
+            "trickName": "Anti Bigger Spin",
             "parameters": {
                 "spin": -540,
                 "flip": 0,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "540 Shuv with FS 180 Body Rotation"
             ]
         },
         {
-            "compositeKey": "S540,F0,B-180",
-            "canonicalName": "Frontside Anti Bigger Spin",
+            "compositeKey": "S540,F0,B-180,A0",
+            "trickName": "Frontside Anti Bigger Spin",
             "parameters": {
                 "spin": 540,
                 "flip": 0,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "540 Shuv with BS 180 Body Rotation"
             ]
         },
         {
-            "compositeKey": "S-720,F0,B-180",
-            "canonicalName": "720 Bigspin",
+            "compositeKey": "S-720,F0,B-180,A0",
+            "trickName": "720 Bigspin",
             "parameters": {
                 "spin": -720,
                 "flip": 0,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "720 Shuv with BS 180 Body Rotation"
             ]
         },
         {
-            "compositeKey": "S720,F0,B180",
-            "canonicalName": "Frontside 720 Bigspin",
+            "compositeKey": "S720,F0,B180,A0",
+            "trickName": "Frontside 720 Bigspin",
             "parameters": {
                 "spin": 720,
                 "flip": 0,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "720 Shuv with FS 180 Body Rotation"
             ]
         },
         {
-            "compositeKey": "S-720,F0,B180",
-            "canonicalName": "Anti 720 Bigspin",
+            "compositeKey": "S-720,F0,B180,A0",
+            "trickName": "Anti 720 Bigspin",
             "parameters": {
                 "spin": -720,
                 "flip": 0,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "720 Shuv with FS 180 Body Rotation"
             ]
         },
         {
-            "compositeKey": "S720,F0,B-180",
-            "canonicalName": "Frontside Anti 720 Bigspin",
+            "compositeKey": "S720,F0,B-180,A0",
+            "trickName": "Frontside Anti 720 Bigspin",
             "parameters": {
                 "spin": 720,
                 "flip": 0,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "720 Shuv with BS 180 Body Rotation"
             ]
         },
         {
-            "compositeKey": "S0,F360,B180",
-            "canonicalName": "Sex Change FS Kickflip",
+            "compositeKey": "S0,F360,B180,A0",
+            "trickName": "Sex Change FS Kickflip",
             "parameters": {
                 "spin": 0,
                 "flip": 360,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S0,F-360,B180",
-            "canonicalName": "Sex Change FS Heelflip",
+            "compositeKey": "S0,F-360,B180,A0",
+            "trickName": "Sex Change FS Heelflip",
             "parameters": {
                 "spin": 0,
                 "flip": -360,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S0,F720,B180",
-            "canonicalName": "Sex Change FS Double Kickflip",
+            "compositeKey": "S0,F720,B180,A0",
+            "trickName": "Sex Change FS Double Kickflip",
             "parameters": {
                 "spin": 0,
                 "flip": 720,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S0,F-720,B180",
-            "canonicalName": "Sex Change FS Double Heelflip",
+            "compositeKey": "S0,F-720,B180,A0",
+            "trickName": "Sex Change FS Double Heelflip",
             "parameters": {
                 "spin": 0,
                 "flip": -720,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S0,F1080,B180",
-            "canonicalName": "Sex Change FS Triple Kickflip",
+            "compositeKey": "S0,F1080,B180,A0",
+            "trickName": "Sex Change FS Triple Kickflip",
             "parameters": {
                 "spin": 0,
                 "flip": 1080,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S0,F-1080,B180",
-            "canonicalName": "Sex Change FS Triple Heelflip",
+            "compositeKey": "S0,F-1080,B180,A0",
+            "trickName": "Sex Change FS Triple Heelflip",
             "parameters": {
                 "spin": 0,
                 "flip": -1080,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S0,F360,B-180",
-            "canonicalName": "Sex Change BS Kickflip",
+            "compositeKey": "S0,F360,B-180,A0",
+            "trickName": "Sex Change BS Kickflip",
             "parameters": {
                 "spin": 0,
                 "flip": 360,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S0,F-360,B-180",
-            "canonicalName": "Disco Flip",
+            "compositeKey": "S0,F-360,B-180,A0",
+            "trickName": "Disco Flip",
             "parameters": {
                 "spin": 0,
                 "flip": -360,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S0,F720,B-180",
-            "canonicalName": "Sex Change BS Double Kickflip",
+            "compositeKey": "S0,F720,B-180,A0",
+            "trickName": "Sex Change BS Double Kickflip",
             "parameters": {
                 "spin": 0,
                 "flip": 720,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S0,F-720,B-180",
-            "canonicalName": "Sex Change BS Double Heelflip",
+            "compositeKey": "S0,F-720,B-180,A0",
+            "trickName": "Sex Change BS Double Heelflip",
             "parameters": {
                 "spin": 0,
                 "flip": -720,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S0,F1080,B-180",
-            "canonicalName": "Sex Change BS Triple Kickflip",
+            "compositeKey": "S0,F1080,B-180,A0",
+            "trickName": "Sex Change BS Triple Kickflip",
             "parameters": {
                 "spin": 0,
                 "flip": 1080,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S0,F-1080,B-180",
-            "canonicalName": "Sex Change BS Triple Heelflip",
+            "compositeKey": "S0,F-1080,B-180,A0",
+            "trickName": "Sex Change BS Triple Heelflip",
             "parameters": {
                 "spin": 0,
                 "flip": -1080,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S180,F0,B-180",
-            "canonicalName": "FS Disco Spin",
+            "compositeKey": "S180,F0,B-180,A0",
+            "trickName": "FS Disco Spin",
             "parameters": {
                 "spin": 180,
                 "flip": 0,
-                "body": -180
+                "body": -180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-180,F0,B180",
-            "canonicalName": "BS Disco Spin",
+            "compositeKey": "S-180,F0,B180,A0",
+            "trickName": "BS Disco Spin",
             "parameters": {
                 "spin": -180,
                 "flip": 0,
-                "body": 180
+                "body": 180,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S360,F0,B-360",
-            "canonicalName": "360 FS Disco Spin",
+            "compositeKey": "S360,F0,B-360,A0",
+            "trickName": "360 FS Disco Spin",
             "parameters": {
                 "spin": 360,
                 "flip": 0,
-                "body": -360
+                "body": -360,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-360,F0,B360",
-            "canonicalName": "360 BS Disco Spin",
+            "compositeKey": "S-360,F0,B360,A0",
+            "trickName": "360 BS Disco Spin",
             "parameters": {
                 "spin": -360,
                 "flip": 0,
-                "body": 360
+                "body": 360,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S0,F0,B-360",
-            "canonicalName": "Backside 360 Body Varial",
+            "compositeKey": "S0,F0,B-360,A0",
+            "trickName": "Backside 360 Body Varial",
             "parameters": {
                 "spin": 0,
                 "flip": 0,
-                "body": -360
+                "body": -360,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "Straight 360 body varial"
             ]
         },
         {
-            "compositeKey": "S0,F0,B360",
-            "canonicalName": "Frontside 360 Body Varial",
+            "compositeKey": "S0,F0,B360,A0",
+            "trickName": "Frontside 360 Body Varial",
             "parameters": {
                 "spin": 0,
                 "flip": 0,
-                "body": 360
+                "body": 360,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "Straight 360 body varial"
             ]
         },
         {
-            "compositeKey": "S0,F360,B-360",
-            "canonicalName": "Kickflip 360 Body Varial",
+            "compositeKey": "S0,F360,B-360,A0",
+            "trickName": "Kickflip 360 Body Varial",
             "parameters": {
                 "spin": 0,
                 "flip": 360,
-                "body": -360
+                "body": -360,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "Double Sex Change?"
             ]
         },
         {
-            "compositeKey": "S0,F-360,B-360",
-            "canonicalName": "Heelflip 360 Body Varial",
+            "compositeKey": "S0,F-360,B-360,A0",
+            "trickName": "Heelflip 360 Body Varial",
             "parameters": {
                 "spin": 0,
                 "flip": -360,
-                "body": -360
+                "body": -360,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": [
                 "Double Sex Change?"
             ]
         },
         {
-            "compositeKey": "S-180,F0,B-360",
-            "canonicalName": "BS Shuv BS 360 Body Varial",
+            "compositeKey": "S-180,F0,B-360,A0",
+            "trickName": "BS Shuv BS 360 Body Varial",
             "parameters": {
                 "spin": -180,
                 "flip": 0,
-                "body": -360
+                "body": -360,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S180,F0,B-360",
-            "canonicalName": "FS Shuv BS 360 Body Varial",
+            "compositeKey": "S180,F0,B-360,A0",
+            "trickName": "FS Shuv BS 360 Body Varial",
             "parameters": {
                 "spin": 180,
                 "flip": 0,
-                "body": -360
+                "body": -360,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-180,F0,B360",
-            "canonicalName": "BS Shuv FS 360 Body Varial",
+            "compositeKey": "S-180,F0,B360,A0",
+            "trickName": "BS Shuv FS 360 Body Varial",
             "parameters": {
                 "spin": -180,
                 "flip": 0,
-                "body": 360
+                "body": 360,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S180,F0,B360",
-            "canonicalName": "FS Shuv FS 360 Body Varial",
+            "compositeKey": "S180,F0,B360,A0",
+            "trickName": "FS Shuv FS 360 Body Varial",
             "parameters": {
                 "spin": 180,
                 "flip": 0,
-                "body": 360
+                "body": 360,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S180,F360,B-360",
-            "canonicalName": "Varial Kickflip 360 Body Varial",
+            "compositeKey": "S180,F360,B-360,A0",
+            "trickName": "Varial Kickflip 360 Body Varial",
             "parameters": {
                 "spin": 180,
                 "flip": 360,
-                "body": -360
+                "body": -360,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S180,F-360,B-360",
-            "canonicalName": "Inward Heelflip 360 Body Varial",
+            "compositeKey": "S180,F-360,B-360,A0",
+            "trickName": "Inward Heelflip 360 Body Varial",
             "parameters": {
                 "spin": 180,
                 "flip": -360,
-                "body": -360
+                "body": -360,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-180,F360,B-360",
-            "canonicalName": "Hardflip 360 Body Varial",
+            "compositeKey": "S-180,F360,B-360,A0",
+            "trickName": "Hardflip 360 Body Varial",
             "parameters": {
                 "spin": -180,
                 "flip": 360,
-                "body": -360
+                "body": -360,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         },
         {
-            "compositeKey": "S-180,F-360,B-360",
-            "canonicalName": "Varial Heelflip 360 Body Varial",
+            "compositeKey": "S-180,F-360,B-360,A0",
+            "trickName": "Varial Heelflip 360 Body Varial",
             "parameters": {
                 "spin": -180,
                 "flip": -360,
-                "body": -360
+                "body": -360,
+                "activeStance": 0
             },
-            "variant": "none",
             "otherNames": []
         }
     ]
