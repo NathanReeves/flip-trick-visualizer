@@ -264,6 +264,16 @@
             "otherNames": []
         },
         {
+            "compositeKey": "S0,F1440,B0,A0",
+            "trickName": "Quad Kickflip",
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S0,F-1440,B0,A0",
+            "trickName": "Quad Heelflip",
+            "otherNames": []
+        },
+        {
             "compositeKey": "S-180,F0,B-180,A0",
             "trickName": "Backside 180",
             "otherNames": []
