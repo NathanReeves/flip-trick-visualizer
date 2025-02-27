@@ -47,6 +47,8 @@ Spin Rotation,Flip Rotation,Body Rotation,Active Stance,Trick Name
 0,-720,0,0,Double Heelflip
 0,1080,0,0,Triple Kickflip
 0,-1080,0,0,Triple Heelflip
+0,1440,0,0,Quad Kickflip
+0,-1440,0,0,Quad Heelflip
 -180,0,-180,0,Backside 180
 180,0,180,0,Frontside 180
 -360,0,-360,0,Backside 360
