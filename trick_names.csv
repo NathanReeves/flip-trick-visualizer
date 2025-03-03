@@ -2,7 +2,7 @@ Spin Rotation,Flip Rotation,Body Rotation,Active Stance,Trick Name
 0,0,0,0,Ollie
 0,0,0,2,Nollie
 -180,0,0,0,Backside Shuv
--180,360,0,0,Varial Kickflip
+-180,360,0,0,Varial Flip
 -180,-360,0,0,Inward Heelflip
 -180,720,0,0,Nightmare Flip
 -180,-720,0,0,Inward Double Heelflip (Backside Shuv + Double Heelflip)
@@ -153,7 +153,7 @@ Spin Rotation,Flip Rotation,Body Rotation,Active Stance,Trick Name
 180,0,-360,0,FS Shuv BS 360 Body Varial (*)
 -180,0,360,0,BS Shuv FS 360 Body Varial (*)
 180,0,360,0,FS Shuv FS 360 Body Varial (*)
-180,360,-360,0,Varial Kickflip 360 Body Varial (*)
+180,360,-360,0,Varial Flip 360 Body Varial (*)
 180,-360,-360,0,Inward Heelflip 360 Body Varial (*)
 -180,360,-360,0,Hardflip 360 Body Varial (*)
 -180,-360,-360,0,Varial Heelflip 360 Body Varial (*)
