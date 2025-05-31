@@ -819,17 +819,17 @@
             "otherNames": []
         },
         {
-            "compositeKey": "S180,F-360,B-360,A0",
+            "compositeKey": "S-180,F-360,B-360,A0",
             "trickName": "Inward Heelflip 360 Body Varial",
             "otherNames": []
         },
         {
-            "compositeKey": "S-180,F360,B-360,A0",
+            "compositeKey": "S180,F360,B-360,A0",
             "trickName": "Hardflip 360 Body Varial",
             "otherNames": []
         },
         {
-            "compositeKey": "S-180,F-360,B-360,A0",
+            "compositeKey": "S180,F-360,B-360,A0",
             "trickName": "Varial Heelflip 360 Body Varial",
             "otherNames": []
         }

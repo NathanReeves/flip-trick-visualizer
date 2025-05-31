@@ -154,8 +154,8 @@ Spin Rotation,Flip Rotation,Body Rotation,Active Stance,Trick Name
 -180,0,360,0,BS Shuv FS 360 Body Varial (*)
 180,0,360,0,FS Shuv FS 360 Body Varial (*)
 180,360,-360,0,Varial Flip 360 Body Varial (*)
-180,-360,-360,0,Inward Heelflip 360 Body Varial (*)
--180,360,-360,0,Hardflip 360 Body Varial (*)
--180,-360,-360,0,Varial Heelflip 360 Body Varial (*)
+-180,-360,-360,0,Inward Heelflip 360 Body Varial (*)
+180,360,-360,0,Hardflip 360 Body Varial (*)
+180,-360,-360,0,Varial Heelflip 360 Body Varial (*)
 
 
