@@ -832,6 +832,96 @@
             "compositeKey": "S180,F-360,B-360,A0",
             "trickName": "Varial Heelflip 360 Body Varial",
             "otherNames": []
+        },
+        {
+            "compositeKey": "S0,F0,B180,A0",
+            "trickName": "FS Body Varial",
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S0,F0,B-180,A0",
+            "trickName": "BS Body Varial",
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S-360,F360,B-360,A0",
+            "trickName": "BS 360 Kickflip",
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S-360,F-360,B-360,A0",
+            "trickName": "BS 360 Heelflip",
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S360,F360,B360,A0",
+            "trickName": "FS 360 Kickflip",
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S360,F-360,B360,A0",
+            "trickName": "FS 360 Heelflip",
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S-540,F540,B-540,A0",
+            "trickName": "BS 540 Kickflip",
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S-540,F-540,B-540,A0",
+            "trickName": "BS 540 Heelflip",
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S540,F540,B540,A0",
+            "trickName": "FS 540 Kickflip",
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S540,F-540,B540,A0",
+            "trickName": "FS 540 Heelflip",
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S-720,F720,B-720,A0",
+            "trickName": "BS 720 Kickflip",
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S-720,F-720,B-720,A0",
+            "trickName": "BS 720 Heelflip",
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S720,F720,B720,A0",
+            "trickName": "FS 720 Kickflip",
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S720,F-720,B720,A0",
+            "trickName": "FS 720 Heelflip",
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S-900,F900,B-900,A0",
+            "trickName": "BS 900 Kickflip",
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S-900,F-900,B-900,A0",
+            "trickName": "BS 900 Heelflip",
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S900,F900,B900,A0",
+            "trickName": "FS 900 Kickflip",
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S900,F-900,B900,A0",
+            "trickName": "FS 900 Heelflip",
+            "otherNames": []
         }
     ]
 }
