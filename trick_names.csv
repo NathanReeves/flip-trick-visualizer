@@ -157,5 +157,21 @@ Spin Rotation,Flip Rotation,Body Rotation,Active Stance,Trick Name
 -180,-360,-360,0,Inward Heelflip 360 Body Varial (*)
 180,360,-360,0,Hardflip 360 Body Varial (*)
 180,-360,-360,0,Varial Heelflip 360 Body Varial (*)
-
-
+0,0,180,0,FS Body Varial
+0,0,-180,0,BS Body Varial
+-360,360,-360,0,BS Kickflip 360
+-360,-360,-360,0,BS Heelflip 360
+360,360,360,0,FS Kickflip 360
+360,-360,360,0,FS Heelflip 360
+-540,540,-540,0,BS Kickflip 540
+-540,-540,-540,0,BS Heelflip 540
+540,540,540,0,FS Kickflip 540
+540,-540,540,0,FS Heelflip 540
+-720,720,-720,0,BS Kickflip 720
+-720,-720,-720,0,BS Heelflip 720
+720,720,720,0,FS Kickflip 720
+720,-720,720,0,FS Heelflip 720
+-900,900,-900,0,BS Kickflip 900
+-900,-900,-900,0,BS Heelflip 900
+900,900,900,0,FS Kickflip 900
+900,-900,900,0,FS Heelflip 900
