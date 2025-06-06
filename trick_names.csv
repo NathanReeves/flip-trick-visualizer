@@ -9,7 +9,7 @@ Spin Rotation,Flip Rotation,Body Rotation,Active Stance,Trick Name
 -360,0,0,0,Backside 360 Shuv
 -360,360,0,0,Tre Flip
 -360,-360,0,0,360 Inward Heelflip
--360,720,0,0,360 Double Flip
+-360,720,0,0,Tre Double Flip
 -360,-720,0,0,360 Inward Double Heelflip (360 Inward Double Heelflip)
 -540,0,0,0,Backside 540 Shuv
 -540,360,0,0,540 Flip
@@ -68,11 +68,11 @@ Spin Rotation,Flip Rotation,Body Rotation,Active Stance,Trick Name
 -180,1080,-180,0,Backside Triple Kickflip
 -180,-1080,-180,0,Backside Triple Heelflip
 -360,360,-180,0,Bigflip
--360,-360,-180,0,Inward Bigflip
+-360,-360,-180,0,Big Inward Heel
 -360,720,-180,0,Big Double Flip
--360,-720,-180,0,Inward Big Double Flip
+-360,-720,-180,0,Big Inward Double Heel
 -540,360,-180,0,Gazelle Flip
--540,-360,-180,0,Bigspin Inward Heelflip
+-540,-360,-180,0,Bigger Inward Heel
 -540,720,-180,0,Gazelle Double Flip
 -540,-720,-180,0,Bigspin Inward Double Heelflip
 -180,360,180,0,Twisted Flip
@@ -96,15 +96,15 @@ Spin Rotation,Flip Rotation,Body Rotation,Active Stance,Trick Name
 180,1080,180,0,Frontside Triple Kickflip
 180,-1080,180,0,Frontside Triple Heelflip
 360,360,180,0,Frontside Bigflip
-360,-360,180,0,Big Heelflip
+360,-360,180,0,Big Heel
 360,720,180,0,Frontside Big Doubleflip
-360,-720,180,0,Big Double Heelflip
+360,-720,180,0,Big Double Heel
 540,360,180,0,Frontside Biggerflip
-540,-360,180,0,Bigger Heelflip
+540,-360,180,0,Bigger Heel
 540,720,180,0,Frontside Bigger Double Flip
-540,-720,180,0,Bigger Double Heelflip
+540,-720,180,0,Bigger Double Heel
 180,360,-180,0,Hardflip + BS Body Varial (*)
-180,-360,-180,0,Inward Heelflip + BS Body Varial (*)
+180,-360,-180,0,Varial Heel + BS Body Varial (*)
 180,720,-180,0,Hard Doubleflip + BS Body Varial (*)
 180,-720,-180,0,Inward Double Heelflip + BS Body Varial (*)
 180,1080,-180,0,Hard Triple Kickflip + BS Body Varial (*)
@@ -147,8 +147,10 @@ Spin Rotation,Flip Rotation,Body Rotation,Active Stance,Trick Name
 -360,0,360,0,360 BS Disco Spin (*)
 0,0,-360,0,Backside 360 Body Varial (*)
 0,0,360,0,Frontside 360 Body Varial (*)
-0,360,-360,0,Kickflip 360 Body Varial (*)
-0,-360,-360,0,Heelflip 360 Body Varial (*)
+0,360,-360,0,Kickflip BS 360 Body Varial (*)
+0,360,360,0,Kickflip FS 360 Body Varial (*)
+0,-360,-360,0,Heelflip BS 360 Body Varial (*)
+0,-360,360,0,Heelflip FS 360 Body Varial (*)
 -180,0,-360,0,BS Shuv BS 360 Body Varial (*)
 180,0,-360,0,FS Shuv BS 360 Body Varial (*)
 -180,0,360,0,BS Shuv FS 360 Body Varial (*)
