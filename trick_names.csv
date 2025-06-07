@@ -149,7 +149,7 @@ Spin Rotation,Flip Rotation,Body Rotation,Active Stance,Trick Name
 0,0,360,0,Frontside 360 Body Varial (*)
 0,360,-360,0,Kickflip BS 360 Body Varial (*)
 0,360,360,0,Kickflip FS 360 Body Varial (*)
-0,-360,-360,0,Heelflip BS 360 Body Varial (*)
+0,-360,-360,0,360 Disco Flip
 0,-360,360,0,Heelflip FS 360 Body Varial (*)
 -180,0,-360,0,BS Shuv BS 360 Body Varial (*)
 180,0,-360,0,FS Shuv BS 360 Body Varial (*)
@@ -177,3 +177,7 @@ Spin Rotation,Flip Rotation,Body Rotation,Active Stance,Trick Name
 -900,-900,-900,0,BS 900 Heelflip
 900,900,900,0,FS 900 Kickflip
 900,-900,900,0,FS 900 Heelflip
+-900,0,-180,0,900 Bigspin
+900,0,180,0,Frontside 900 Bigspin
+-900,0,0,0,Backside 900 Shuv
+900,0,0,0,Frontside 900 Shuv

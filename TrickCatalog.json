@@ -55,7 +55,7 @@
         },
         {
             "compositeKey": "S-360,F720,B0,A0",
-            "trickName": "360 Double Flip",
+            "trickName": "Tre Double Flip",
             "otherNames": []
         },
         {
@@ -370,7 +370,7 @@
         },
         {
             "compositeKey": "S-360,F-360,B-180,A0",
-            "trickName": "Inward Bigflip",
+            "trickName": "Big Inward Heel",
             "otherNames": []
         },
         {
@@ -380,7 +380,7 @@
         },
         {
             "compositeKey": "S-360,F-720,B-180,A0",
-            "trickName": "Inward Big Double Flip",
+            "trickName": "Big Inward Double Heel",
             "otherNames": []
         },
         {
@@ -390,7 +390,7 @@
         },
         {
             "compositeKey": "S-540,F-360,B-180,A0",
-            "trickName": "Bigspin Inward Heelflip",
+            "trickName": "Bigger Inward Heel",
             "otherNames": []
         },
         {
@@ -514,7 +514,7 @@
         },
         {
             "compositeKey": "S360,F-360,B180,A0",
-            "trickName": "Big Heelflip",
+            "trickName": "Big Heel",
             "otherNames": []
         },
         {
@@ -524,7 +524,7 @@
         },
         {
             "compositeKey": "S360,F-720,B180,A0",
-            "trickName": "Big Double Heelflip",
+            "trickName": "Big Double Heel",
             "otherNames": []
         },
         {
@@ -534,7 +534,7 @@
         },
         {
             "compositeKey": "S540,F-360,B180,A0",
-            "trickName": "Bigger Heelflip",
+            "trickName": "Bigger Heel",
             "otherNames": []
         },
         {
@@ -544,7 +544,7 @@
         },
         {
             "compositeKey": "S540,F-720,B180,A0",
-            "trickName": "Bigger Double Heelflip",
+            "trickName": "Bigger Double Heel",
             "otherNames": []
         },
         {
@@ -554,7 +554,7 @@
         },
         {
             "compositeKey": "S180,F-360,B-180,A0",
-            "trickName": "Inward Heelflip + BS Body Varial",
+            "trickName": "Varial Heel + BS Body Varial",
             "otherNames": []
         },
         {
@@ -785,12 +785,22 @@
         },
         {
             "compositeKey": "S0,F360,B-360,A0",
-            "trickName": "Kickflip 360 Body Varial",
+            "trickName": "Kickflip BS 360 Body Varial",
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S0,F360,B360,A0",
+            "trickName": "Kickflip FS 360 Body Varial",
             "otherNames": []
         },
         {
             "compositeKey": "S0,F-360,B-360,A0",
-            "trickName": "Heelflip 360 Body Varial",
+            "trickName": "360 Disco Flip",
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S0,F-360,B360,A0",
+            "trickName": "Heelflip FS 360 Body Varial",
             "otherNames": []
         },
         {
@@ -921,6 +931,26 @@
         {
             "compositeKey": "S900,F-900,B900,A0",
             "trickName": "FS 900 Heelflip",
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S-900,F0,B-180,A0",
+            "trickName": "900 Bigspin",
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S900,F0,B180,A0",
+            "trickName": "Frontside 900 Bigspin",
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S-900,F0,B0,A0",
+            "trickName": "Backside 900 Shuv",
+            "otherNames": []
+        },
+        {
+            "compositeKey": "S900,F0,B0,A0",
+            "trickName": "Frontside 900 Shuv",
             "otherNames": []
         }
     ]
