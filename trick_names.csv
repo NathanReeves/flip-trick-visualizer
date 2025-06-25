@@ -30,7 +30,7 @@ Spin Rotation,Flip Rotation,Body Rotation,Active Stance,Trick Name
 360,360,0,0,360 Hardflip
 360,-360,0,0,Laser Flip
 360,720,0,0,360 Hard Doubleflip
-360,-720,0,0,360 Daydream Flip(FS 360 Double Heelflip)
+360,-720,0,0,Laser Double Flip
 540,0,0,0,Frontside 540 Shuv
 540,360,0,0,540 Hardflip
 540,-360,0,0,540 Laser Flip
@@ -41,6 +41,7 @@ Spin Rotation,Flip Rotation,Body Rotation,Active Stance,Trick Name
 720,-360,0,0,720 Laser Flip
 720,720,0,0,720 Hard Doubleflip
 720,-720,0,0,720 Daydream Flip (FS 720 Double Heelflip)
+540,-360,-180,0,540 Laser Flip + BS Body Varial
 0,360,0,0,Kickflip
 0,-360,0,0,Heelflip
 0,720,0,0,Double Kickflip
@@ -71,18 +72,22 @@ Spin Rotation,Flip Rotation,Body Rotation,Active Stance,Trick Name
 -360,-360,-180,0,Big Inward Heel
 -360,720,-180,0,Big Double Flip
 -360,-720,-180,0,Big Inward Double Heel
--540,360,-180,0,Gazelle Flip
+-540,360,-360,0,Gazelle Flip
+540,-360,360,0,Gazelle Heelflip
 -540,-360,-180,0,Bigger Inward Heel
--540,720,-180,0,Gazelle Double Flip
+-540,720,-360,0,Gazelle Double Flip
 -540,-720,-180,0,Bigspin Inward Double Heelflip
 -180,360,180,0,Twisted Flip
 -180,-360,180,0,Inward Heelflip + FS Body Varial (*)
+180,-720,-180,0,Daydream Flip + BS Body Varial
 -180,720,180,0,Twisted Double Kickflip
 -180,-720,180,0,Inward Double Heelflip + FS Body Varial (*)
 -180,1080,180,0,Twisted Triple Kickflip
 -180,-1080,180,0,Inward Triple Heelflip + FS Body Varial (*)
 -360,360,180,0,360 Twisted Flip
--360,-360,180,0,360 Inward Heelflip + FS Body Varial (Like a Twisted Flip for 360 Inward Heelflips)
+-360,-360,180,0,360 Inward Heelflip + FS Body Varial
+360,-360,-180,0,Laser Flip + BS Body Varial
+360,360,-180,0,360 Hardflip + BS Body Varial
 -360,720,180,0,360 Twisted Double Flip
 -360,-720,180,0,Inward Double Heelflip + FS Body Varial (*)
 -540,360,180,0,540 Twisted Flip
@@ -100,23 +105,18 @@ Spin Rotation,Flip Rotation,Body Rotation,Active Stance,Trick Name
 360,720,180,0,Frontside Big Doubleflip
 360,-720,180,0,Big Double Heel
 540,360,180,0,Frontside Biggerflip
+-540,360,-180,0,Biggerflip
 540,-360,180,0,Bigger Heel
 540,720,180,0,Frontside Bigger Double Flip
 540,-720,180,0,Bigger Double Heel
 180,360,-180,0,Hardflip + BS Body Varial (*)
 180,-360,-180,0,Varial Heel + BS Body Varial (*)
 180,720,-180,0,Hard Doubleflip + BS Body Varial (*)
-180,-720,-180,0,Inward Double Heelflip + BS Body Varial (*)
 180,1080,-180,0,Hard Triple Kickflip + BS Body Varial (*)
-180,-1080,-180,0,Inward Triple Heelflip + BS Body Varial (*)
 360,360,-180,0,360 Hardflip + BS Body Varial (*)
-360,-360,-180,0,360 Inward Heelflip + BS Body Varial (*)
 360,720,-180,0,360 Hard Doubleflip + BS Body Varial (*)
-360,-720,-180,0,360 Inward Double Heelflip + BS Body Varial (*)
 540,360,-180,0,540 Hardflip + BS Body Varial (*)
-540,-360,-180,0,540 Inward Heelflip + BS Body Varial (*)
 540,720,-180,0,540 Hard Doubleflip + BS Body Varial (*)
-540,-720,-180,0,540 Inward Double Heelflip + BS Body Varial (*)
 -360,0,-180,0,Bigspin
 360,0,180,0,Frontside Bigspin
 -360,0,180,0,Anti Bigspin
@@ -130,17 +130,17 @@ Spin Rotation,Flip Rotation,Body Rotation,Active Stance,Trick Name
 -720,0,180,0,Anti 720 Bigspin (720 Shuv with FS 180 Body Rotation)
 720,0,-180,0,Frontside Anti 720 Bigspin (720 Shuv with BS 180 Body Rotation)
 0,360,180,0,Kickflip FS Sex Change (*)
-0,-360,180,0,Heelflip FS Sex Change (*)
+0,-360,180,0,Heelflip FS Body Varial (*)
 0,720,180,0,Double Kickflip FS Sex Change (*)
-0,-720,180,0,Double Heelflip FS Sex Change (*)
+0,-720,180,0,Double Heelflip FS Body Varial (*)
 0,1080,180,0,Triple Kickflip FS Sex Change (*)
-0,-1080,180,0,Triple Heelflip FS Sex Change (*)
+0,-1080,180,0,Triple Heelflip FS Body Varial (*)
 0,360,-180,0,Kickflip BS Sex Change (*)
 0,-360,-180,0,Disco Flip
-0,720,-180,0,Double Kickflip BS Sex Change (*)
-0,-720,-180,0,Double Heelflip BS Sex Change (*)
-0,1080,-180,0,Triple Kickflip BS Sex Change (*)
-0,-1080,-180,0,Triple Heelflip BS Sex Change (*)
+0,720,-180,0,Double Kickflip BS Sex Change
+0,-720,-180,0,Double Heelflip BS Body Varial
+0,1080,-180,0,Triple Kickflip BS Sex Change
+0,-1080,-180,0,Triple Heelflip BS Body Varial
 180,0,-180,0,FS Disco Spin
 -180,0,180,0,BS Disco Spin
 360,0,-360,0,360 FS Disco Spin (*)
@@ -152,30 +152,30 @@ Spin Rotation,Flip Rotation,Body Rotation,Active Stance,Trick Name
 0,-360,-360,0,360 Disco Flip
 0,-360,360,0,Heelflip FS 360 Body Varial (*)
 -180,0,-360,0,BS Shuv BS 360 Body Varial (*)
-180,0,-360,0,FS Shuv BS 360 Body Varial (*)
--180,0,360,0,BS Shuv FS 360 Body Varial (*)
+180,0,-360,0,360 FS Disco Spin
+-180,0,360,0,360 BS Disco Spin
 180,0,360,0,FS Shuv FS 360 Body Varial (*)
-180,360,-360,0,Varial Flip 360 Body Varial (*)
--180,-360,-360,0,Inward Heelflip 360 Body Varial (*)
-180,360,-360,0,Hardflip 360 Body Varial (*)
-180,-360,-360,0,Varial Heelflip 360 Body Varial (*)
+-180,360,-360,0,Varial Flip BS 360 Body Varial (*)
+-180,-360,-360,0,Inward Heelflip BS 360 Body Varial (*)
+180,360,-360,0,Hardflip 360 BS Body Varial (*)
+180,-360,-360,0,Varial Heelflip BS 360 Body Varial (*)
 0,0,180,0,FS Body Varial
 0,0,-180,0,BS Body Varial
 -360,360,-360,0,BS 360 Kickflip
 -360,-360,-360,0,BS 360 Heelflip
 360,360,360,0,FS 360 Kickflip
 360,-360,360,0,FS 360 Heelflip
--540,540,-540,0,BS 540 Kickflip
--540,-540,-540,0,BS 540 Heelflip
-540,540,540,0,FS 540 Kickflip
-540,-540,540,0,FS 540 Heelflip
--720,720,-720,0,BS 720 Kickflip
--720,-720,-720,0,BS 720 Heelflip
-720,720,720,0,FS 720 Kickflip
-720,-720,720,0,FS 720 Heelflip
--900,900,-900,0,BS 900 Kickflip
--900,-900,-900,0,BS 900 Heelflip
-900,900,900,0,FS 900 Kickflip
+-540,360,-540,0,BS 540 Kickflip
+-540,-360,-540,0,BS 540 Heelflip
+540,360,540,0,FS 540 Kickflip
+540,-360,540,0,FS 540 Heelflip
+-720,360,-720,0,BS 720 Kickflip
+-720,-360,-720,0,BS 720 Heelflip
+720,360,720,0,FS 720 Kickflip
+720,-360,720,0,FS 720 Heelflip
+-900,360,-900,0,BS 900 Kickflip
+-900,-360,-900,0,BS 900 Heelflip
+900,360,900,0,FS 900 Kickflip
 900,-900,900,0,FS 900 Heelflip
 -900,0,-180,0,900 Bigspin
 900,0,180,0,Frontside 900 Bigspin
