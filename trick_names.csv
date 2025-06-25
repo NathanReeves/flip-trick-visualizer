@@ -74,6 +74,7 @@ Spin Rotation,Flip Rotation,Body Rotation,Active Stance,Trick Name
 -360,-720,-180,0,Big Inward Double Heel
 -540,360,-360,0,Gazelle Flip
 540,-360,360,0,Gazelle Heelflip
+-540,720,-180,0,Bigger Double Flip
 -540,-360,-180,0,Bigger Inward Heel
 -540,720,-360,0,Gazelle Double Flip
 -540,-720,-180,0,Bigspin Inward Double Heelflip
@@ -113,7 +114,6 @@ Spin Rotation,Flip Rotation,Body Rotation,Active Stance,Trick Name
 180,-360,-180,0,Varial Heel + BS Body Varial (*)
 180,720,-180,0,Hard Doubleflip + BS Body Varial (*)
 180,1080,-180,0,Hard Triple Kickflip + BS Body Varial (*)
-360,360,-180,0,360 Hardflip + BS Body Varial (*)
 360,720,-180,0,360 Hard Doubleflip + BS Body Varial (*)
 540,360,-180,0,540 Hardflip + BS Body Varial (*)
 540,720,-180,0,540 Hard Doubleflip + BS Body Varial (*)

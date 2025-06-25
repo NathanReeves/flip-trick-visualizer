@@ -397,6 +397,11 @@
             "otherNames": []
         },
         {
+            "compositeKey": "S-540,F720,B-180,A0",
+            "trickName": "Bigger Double Flip",
+            "otherNames": []
+        },
+        {
             "compositeKey": "S-540,F-360,B-180,A0",
             "trickName": "Bigger Inward Heel",
             "otherNames": []
@@ -591,11 +596,6 @@
         {
             "compositeKey": "S180,F1080,B-180,A0",
             "trickName": "Hard Triple Kickflip + BS Body Varial",
-            "otherNames": []
-        },
-        {
-            "compositeKey": "S360,F360,B-180,A0",
-            "trickName": "360 Hardflip + BS Body Varial",
             "otherNames": []
         },
         {
